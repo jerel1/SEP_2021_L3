@@ -1,0 +1,133 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+h1,h2,h3,h4 {
+    margin-bottom: 20px;
+}
+section {
+    margin-left: 20px;
+}
+
+input[type='submit'] {
+    padding: 3px;
+}
+
+/* Styles for header */
+nav ul {
+    list-style: none;
+    display: flex;
+    height: 5vh;
+    margin: 20px 20px 0 20px;
+}
+
+nav ul li:first-child{
+    margin-right: 100px;
+}
+
+nav ul li:not(:first-child) {
+    margin-right: 20px;
+}
+
+
+/* End of Styles for header */
+
+/* Styles for Register*/
+.customerRegSection, .merchantRegSection, .riderRegSection {
+    display: none;
+}
+
+/* End of styles for Register*/
+
+
+/* Styles for restaurants */
+.addRestaurantSection {
+    display: none;
+}
+.restaurant, .restaurant_img {
+    width: 300px;
+}
+.restaurants {
+    display: flex;
+    flex-wrap: wrap;
+}
+.restaurants > * {
+    margin-right: 30px;
+    margin-bottom: 20px;
+}
+
+.restaurantDetails {
+    width: 100%;
+}
+
+.restaurant_view .menuItems {
+    width: 400px;
+}
+
+.restaurant_view .menuItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+/* End of styles for restaurants */
+
+/* Styles for view restaurant page */
+.viewRestaurantPage {
+    display: flex;
+    margin-left: 20px;
+}
+
+.viewRestaurantPage > * {
+    margin-right: 40px;
+}
+
+/* End of styles for view restaurant page */
+
+
+/* Styles for Register Page */
+.regType {
+    margin-right: 5px;
+}
+/* End of Styles for Register Page */
+
+/* Styles for order cart */
+.order_item {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.order_item > * {
+    margin-right: 10px;
+}
+/* End of Styles for order cart */
+
+
+/* Styles for restaurant sales page */
+.restaurant_sales.restaurant {
+    margin-bottom: 20px;
+}
+.restaurant_sales {
+    margin-left: 20px;
+}
+/* End of Styles for restaurant sales page */
+
+/* Styles for all orders page */
+.old_order {
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+/* End of Styles for all orders page */
+
+
+/* Styles for merchant restaurant page */
+.merchant_restaurant_home {
+    display: flex;
+}
+
+.merchant_restaurant_home > * {
+    margin-right: 40px;
+}
+/* End ofStyles for merchant restaurant page */
