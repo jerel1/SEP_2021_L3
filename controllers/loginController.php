@@ -12,7 +12,7 @@
         //check if result contains something.
         if($result) {
             $_SESSION["loggedInUser"] = $result;
-            header("Location: /delivery_jerel");
+            header("Location: /delivery");
         } else {
             $_SESSION["loginErrorMessage"] = "You have entered the wrong login credentials. Please try again.";
             header("Location: ../views/login.php");

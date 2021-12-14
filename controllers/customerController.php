@@ -34,7 +34,7 @@
             $result = mysqli_fetch_assoc($login_query);
             $_SESSION["loggedInUser"] = $result;
 
-            header("Location: /delivery_jerel");
+            header("Location: /delivery");
         }
     }
     

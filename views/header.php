@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Delivery Service!</title>
-    <link rel="stylesheet" href="/delivery_jerel/views/css/styles.css">
+    <link rel="stylesheet" href="/delivery/views/css/styles.css">
 </head>
 <body>
     <header>
