@@ -1,6 +1,6 @@
 <?php
-    require_once "./views/header.php";
-    require_once "./controllers/restaurantController.php";
+    require_once "../header.php";
+    require_once "../../controllers/restaurantController.php";
 ?>
 <body>
     <section>
