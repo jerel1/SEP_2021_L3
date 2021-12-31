@@ -16,7 +16,7 @@
                     if(isset($_SESSION['loggedInUser'])) {
                         $user = $_SESSION['loggedInUser'];
                         $name = $user["name"];
-                        echo "<li>Welcome <b>".$name."! </b></li>";
+                        echo "<li>Welcome <b>".$name."!</b></li>";
                         $role = $user["role"];
                         switch($role) {
                             case "admin":
@@ -40,8 +40,15 @@
                         echo "<li><a href='/delivery/views/login.php'>Login</a></li>";
                         echo "<li><a href='/delivery/views/register.php'>Register</a></li>";
                     }
+                    
                 ?>
+                <li>
+                    <input id="search" type="search" placeholder="Search" width="50px" autofocus required />
+                </li>
+                </div>
             </ul>
         </nav>
     </header>
+
+  
 </body>

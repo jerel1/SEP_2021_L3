@@ -1,0 +1,416 @@
+main
+{
+  width:100%;
+}
+
+@font-face 
+{
+    font-family:Nic;
+    src:url("../Fonts/Niconne/Niconne-Regular.ttf");
+}
+
+@font-face 
+{
+    font-family:Lato;
+    src:url("../Fonts/Lato/Lato-Regular.ttf");
+}
+
+#Login
+{
+    text-align:center;
+}
+
+button
+{
+    margin-left:80px;
+    border-radius: 0.3em;
+    /* margin: 6px; */
+    background-color: #A18314;
+    color: white;
+    font-size: 17px;
+    padding: 10px;
+    width: 180px;
+    height: 60px;
+
+}
+
+#Center
+{
+    /* padding-left:200px; */
+    margin-left:80px;
+    margin-top:30px;
+    margin-bottom:45px;
+}
+
+
+#state
+{
+    text-align:center;
+    
+}
+
+#Zoom h2
+{
+    font-family:Arial;
+    text-align:center;
+    
+}
+
+#box
+{
+    border:3px solid black;
+    margin:0 auto;
+    width:300px;
+    height:140px;
+    margin-top:30px;
+
+}
+
+#box p
+{
+    text-align:center;
+    margin-top:40px;
+}
+
+.customerRegSectioninput 
+{
+  text-align:center;
+}
+
+#Customer input[type="submit"]
+{
+    
+    margin:0 auto;
+    border-radius: 0.3em;
+    /* margin: 6px; */
+    background-color: #A18314;
+    color: white;
+    font-size: 17px;
+    padding:10px;
+    width:180px;
+    height:60px;
+    
+    
+
+
+}
+
+.Logon
+{
+    width:100%;
+    margin:0 auto;
+    text-align:center;
+}
+
+.register
+{
+    width:100%;
+    margin:0 auto;
+    text-align:center;
+}
+#Customer input[type="submit"]:hover
+{
+    
+
+    border-radius: 0.3em;
+    /* margin-left:180px; */
+    margin:0 auto;
+    /* margin-bottom:50px; */
+    background-color: #F7EBC0;
+    color: black;
+    font-size: 17px;
+    padding:10px;
+
+
+}
+
+
+
+#Customer textarea
+{
+   padding-top:30px;
+   text-align:center;
+}
+#message
+{
+    text-align: center;
+    margin:0 auto;
+}
+
+#Customer fieldset
+ {
+     
+     font-size:20px;
+     font-family:Lato;
+     border: 10px solid #F1A54E;
+     border-radius:10px;
+     background-color:white;
+     padding: 20px 10px;
+     position: relative;
+ }
+
+
+
+fieldset #Contact
+{
+    margin:0 auto;
+}
+
+#Customer input[type="email"]
+{
+
+    color:#253F7D;
+    text-align:center;
+    
+}
+
+#Customer input[type="number"]
+{
+
+    color:#253F7D;
+    text-align:center;
+    width:302px;
+    height:70px;
+}
+#Customer input
+{
+    border-radius:4px;
+    font-family:Lato;
+    border:1px solid #dcdcdc;
+
+}
+#Customer textarea
+{
+    border-radius: 4px;
+}
+
+#Customer legend
+{
+    
+    /* padding:0.2em 1.5em; */
+    background-color:white;
+    border-radius:15px;
+    margin:0 auto;
+    font-weight:bold;
+    font-family:Lato;
+    font-size:22px;
+    width:150px;
+    padding:18px;
+    text-align:center;
+
+}
+#Contact label
+{
+    line-height:12px;
+    letter-spacing:.5px;
+    padding-bottom:28px;
+    font-size:18px;
+    color:#785A06;
+    font-family:Lato;
+    font-weight:bold;
+    text-decoration:none;
+    margin:50px;
+    line-height:20px;
+}
+
+
+#Contact
+{
+    /* border:1px solid black; */
+    /* height:930px; */
+    border-radius:15px;
+    width:570px;
+    margin:0 auto;
+    background-color:white;
+    /* margin-top:50px; */
+    margin-bottom:50px;
+    padding:30px;
+
+}
+
+/* div#Contact
+{
+    margin-top:80px;
+} */
+
+#padding
+{
+   padding-top:90px;
+   padding-bottom:90px;
+}
+
+#Customer input[type="file"]
+{
+    border:none;
+    margin-left:120px;
+}
+
+
+#form-control
+{
+    text-align:center;
+    display: inline-block;
+}
+
+#form-control label
+{
+    width:50px;
+    display:inline-block;
+    /* margin:80px; */
+}
+
+
+
+/* 
+#form-control
+{
+    margin:20px 20px; 
+}
+ */
+
+
+#Profile
+{
+    position:relative;
+    bottom:440px;
+    left:450px;
+}
+
+#Profile img
+{
+    width:120px;
+    height:120px;
+}
+
+#Upload
+{
+    margin-top:6px;
+    
+}
+
+.updateProfile
+{
+    margin-left:100px;
+}
+
+#Success
+{
+    text-align:center;
+    font-size:60px;
+    font-family:Arial;
+    margin-top:100px;
+
+}
+
+#Homepage
+{
+    text-align:center;
+    margin-top:20px;
+    font-size:20px;
+}
+
+#Customer input[type=button]
+{
+    padding:6px;
+    background-color:black;
+    color:white;
+    margin-left:80px;
+    text-align:center;
+}
+
+
+#Customer input[type=text],textarea
+{
+
+    color:#253F7D;
+    width:70px;
+    height:70px;
+}
+
+#Customer input[type=email]
+{
+
+    color:#253F7D;
+    width:302px;
+    height:70px;
+}
+
+#Customer input[type=password]
+{
+
+    color:#253F7D;
+    text-align:center;
+    width:302px;
+    height:70px;
+}
+
+#Customer input[type=tel]
+{
+
+    text-align:center;
+    color:#253F7D;
+    width:302px;
+    height:70px;
+}
+
+
+
+
+
+
+#Customer input[type="text"]
+{
+    width:300px;
+    text-align:center;
+}
+
+#Customer textarea
+{
+    width:300px;
+}
+
+.customerRegSectioninput input
+{
+    width:300px;
+    height:40px;
+    margin-top:8px;
+}
+
+
+.customerRegSection input:placeholder-shown
+{
+    text-align: center;
+}
+
+#Customer footer
+{
+    clear:both;
+    display:flex;
+    justify-content:flex-end;
+    /* position:fixed;
+    bottom:300;
+    right:500;
+    width:500px; */
+    
+
+}
+
+#socialmedia
+{
+    /* display:flex;
+    justify-content:flex-end; */
+    position:fixed;
+    bottom:0px;
+    right:0px;
+}
+
+#socialmedia a
+{
+    
+    margin-left:15px;
+    margin-right:15px;
+}
+
+
+
+
