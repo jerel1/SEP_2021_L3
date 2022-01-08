@@ -1,9 +1,56 @@
+<link rel="stylesheet" href="merchantglobal.css">
+    <script src="menu.js"></script>
 <?php
-    require_once "../header.php";
+    // require_once "../header.php";
     require_once "../../controllers/restaurantController.php";
 ?>
 <body>
-    <section>
+<nav id="navbar">
+        <ul>
+            <li>
+                <a href="fpaafk" id="prfpic">profilepic</a>
+            </li>
+            <li>
+                <a href="/SEP_2021_L3/delivery/views/index.php" id="home">Home</a>
+            </li>
+            <li>
+                <a href="../logout.php" id="logout">Logout</a>
+            </li>
+            <li>
+                <div id="myNav" class="overlay">
+
+                <!-- Button to close the overlay navigation -->
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+                <!-- Overlay content -->
+                <div class="overlay-content">
+                <a href="#">About</a>
+                <a href="#">Services</a>
+                <a href="#">Clients</a>
+                <a href="#">Contact</a>
+                </div>
+
+                </div>
+
+                <!-- Use any element to open/show the overlay navigation menu -->
+                <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+            </li>
+        </ul>
+    </nav>
+    <header>
+        <h1>
+    <?php
+            session_start();
+            if(isset($_SESSION['loggedInUser'])) {
+            $user = $_SESSION['loggedInUser'];
+            $name = $user["name"]; 
+            echo "Welcome ".$name."!";
+            $role = $user["role"];
+        }
+    ?>
+        </h1>
+    </header>
+    <section id="restaurants">
     <!-- Replace the following h1 with code snippet 3-5 -->
     <?php
     $user = $_SESSION["loggedInUser"];
@@ -15,6 +62,7 @@
         echo "<article class='restaurants'>";
         foreach($restaurants as $restaurant) {
 ?>
+    <div id="mr">
         <a href="restaurant.php?id=<?=$restaurant['id']?>">
             <aside class="restaurant">
                 <img class="restaurant_img" src="<?='../uploaded_images/'.$restaurant['image']?>" alt="<?=$restaurant['image']?>">
@@ -26,38 +74,19 @@
 <?php
             
         }
-        echo "</article>";
     }
 ?>
 
     <!-- code snippet 3-6 -->
-    <button class="addRestaurantBtn">Add new restaurant</button>
-<article class="addRestaurantSection">
-    <form action="../../controllers/restaurantController.php?function=addRestaurant" enctype="multipart/form-data" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name" required><br>
-        <label for="open_hours">Opening hours</label>
-        <input type="time" name="open_hours" id="open_hours" required><br>
-        <label for="close_hours">Closing hours</label>
-        <input type="time" name="close_hours" id="close_hours" required><br>
-        <label for="cuisine">Cuisine:</label>
-        <select name="cuisine" id="cuisine" required>
-        <?php
-            $cuisines = getCuisines();
-            foreach ($cuisines as $cuisine) {
-                echo "<option value='".$cuisine["id"]."'>".$cuisine["name"]."</option>";
-            }
-        ?>
-        </select><br>
-        <label for="website">Website:</label>
-        <input type="text" name="website" id="website" required><br>
-        <label for="image">Image:</label>
-        <input type="file" name="image" id="image" accept="image/*" required><br>
-        <label for="address">Address:</label>
-        <textarea name="address" id="address" cols="20" rows="5" required></textarea><br>
-        <input type="submit" value="Add restaurant">
-    </form>
-</article>
+    
+    <script type="text/javascript">
+// Popup window code
+function newPopup(url) {
+	popupWindow = window.open(
+		url,'popUpWindow','height=300,width=400,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
+}
+</script>
+<p><a href="JavaScript:newPopup('addrestaurant.php');"><button class="addRestaurantBtn"><img src="images/plusSignbutton.png" id="plussign"></button></a></p>
 <div>
     <?php
         if(isset($_SESSION["merchantHomeMessage"])) {
@@ -66,16 +95,7 @@
         }
     ?>
 </div>
+</div>
     </section>
-
-    <!-- code snippet 3-7 -->
-    <script src="../js/jquery-3.5.1.min.js"></script>
-<script>
-    $(document).ready(function(){
-        $(".addRestaurantBtn").click(function(){
-            $(".addRestaurantSection").show();
-        });
-    })
-</script>
 </body>
 </html>
