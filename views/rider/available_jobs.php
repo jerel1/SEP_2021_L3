@@ -2,6 +2,13 @@
     require_once "../header.php";
 
     // code snippet 5-2
+    require_once "../../controllers/jobController.php";
+    require_once "../../controllers/ordersController.php";
+    require_once "../../controllers/itemController.php";
+    require_once "../../controllers/customerController.php";
+
+    $availableOrders = getAvailableOrders();
+    $user = $_SESSION["loggedInUser"];
 
 ?>
 <body>
