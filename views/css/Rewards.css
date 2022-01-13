@@ -1,0 +1,31 @@
+.box
+{
+  border:6px solid red;
+  width:1050px;
+  height:200px;
+  margin:30px;
+  padding:50px;
+}
+
+.box2
+{
+  border:3px solid green;
+  width:1050px;
+  height:200px;
+  margin:30px;
+  padding:50px;
+}
+
+input[type="submit"]
+{
+    
+    margin-left:850px;
+    border-radius: 0.3em;
+    background-color: #A18314;
+    color: white;
+    font-size: 17px;
+    padding:10px;
+    
+
+
+}

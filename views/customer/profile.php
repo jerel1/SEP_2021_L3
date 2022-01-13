@@ -26,44 +26,49 @@
                
                 <div id="Zoom"><h2>Update your profile!</h2></div>
 
-                
-                
-                <div id="Center">
-                    <label>Name</label>
-                    
-                    <?=$user["name"];?><br>
-                </div>
-                <br>
+               
+              
+               <div id="middle">
 
-                <div id="Center">
-                    <label>Email Address</label>
-                    
-                    <?=$user["email"];?><br>
-                </div>
-                <br>
-
-            
-
-                <div id="Center">
-                    <label for="">Phone Number</label>
-                    
-                    <?=$customer["mobileNumber"];?><br>
-                </div>
-
-                <br>
-                <div id="Center">
-                    <label>Address</label>
-                    
-                   <?=$customer["address"];?><br>
-                </div> 
-                
-                <br>
-
-                <div id="Center" class="updateProfile">
-                    
-                <a href="updateProfile.php"><button>Update Profile</button></a>
+               <div>
+                   <label>Name</label>
                    
+                   <div><?=$user["name"];?></div><br>
                </div>
+               <br>
+
+               <div>
+                   <label>Email Address</label>
+                   
+                   <div><?=$user["email"];?></div><br>
+               </div>
+               <br>
+
+           
+
+               <div>
+                   <label for="">Phone Number</label>
+                   
+                   <div><?=$customer["mobileNumber"];?></div><br>
+               </div>
+
+               <br>
+               <div>
+                   <label>Address</label>
+                   
+                  <div><?=$customer["address"];?></div><br>
+               </div> 
+               
+               <br>
+
+               <div class="updateProfile">
+                   
+               <a href="updateProfile.php"><button>Update Profile</button></a>
+                  
+              </div>
+              
+
+</div>
 
 </div>
     

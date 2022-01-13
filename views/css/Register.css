@@ -15,6 +15,11 @@ main
     src:url("../Fonts/Lato/Lato-Regular.ttf");
 }
 
+#middle
+{
+    margin-left:180px;
+}
+
 #Login
 {
     text-align:center;
@@ -22,10 +27,10 @@ main
 
 button
 {
-    margin-left:80px;
+    
     border-radius: 0.3em;
     /* margin: 6px; */
-    background-color: #A18314;
+    /* background-color: #A18314; */
     color: white;
     font-size: 17px;
     padding: 10px;
@@ -34,12 +39,11 @@ button
 
 }
 
-#Center
+
+
+#Center label
 {
-    /* padding-left:200px; */
-    margin-left:80px;
-    margin-top:30px;
-    margin-bottom:45px;
+    text-align:center;
 }
 
 
@@ -188,6 +192,7 @@ fieldset #Contact
 {
     
     /* padding:0.2em 1.5em; */
+    text-align:center;
     background-color:white;
     border-radius:15px;
     margin:0 auto;
@@ -202,6 +207,7 @@ fieldset #Contact
 #Contact label
 {
     line-height:12px;
+    margin:0 auto;
     letter-spacing:.5px;
     padding-bottom:28px;
     font-size:18px;
@@ -219,7 +225,7 @@ fieldset #Contact
     /* border:1px solid black; */
     /* height:930px; */
     border-radius:15px;
-    width:570px;
+    width:870px;
     margin:0 auto;
     background-color:white;
     /* margin-top:50px; */
@@ -228,10 +234,7 @@ fieldset #Contact
 
 }
 
-/* div#Contact
-{
-    margin-top:80px;
-} */
+
 
 #padding
 {

@@ -3,7 +3,7 @@
 
     //code snippet 4-2
     require_once "../../controllers/restaurantController.php";
-require_once "../../controllers/ordersController.php";
+    require_once "../../controllers/ordersController.php";
 
 $restaurant_id = $_GET["id"];
 
