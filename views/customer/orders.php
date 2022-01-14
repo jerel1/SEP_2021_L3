@@ -1,6 +1,12 @@
 <section class="cart">
 <!-- replace the following h1 with code snippet 4-4 -->
-<p>Can't solve error regarding customer order</p>
+<?php
+         require_once "../../controllers/ordersController.php";
+         require_once "../../controllers/customerController.php";
+
+ 
+
+?>
 <?php
         $orders = getCustomerCurrentOrder();
         if(count($orders)>0) {
