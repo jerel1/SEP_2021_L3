@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="/delivery/views/css/register.css">
+    <link rel="stylesheet" href="/delivery/views/css/Register.css">
 
     <?php
     include '../header.php';
