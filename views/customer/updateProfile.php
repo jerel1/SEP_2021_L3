@@ -16,7 +16,7 @@
 <body>
     <section>
     <!-- Replace the following h1 with code snippet 4-11 -->
-    <h1>Update Profile page</h1>
+   
     <?php 
         $user = $_SESSION["loggedInUser"];
         $customer = getCustomerRecord($user["id"]);
