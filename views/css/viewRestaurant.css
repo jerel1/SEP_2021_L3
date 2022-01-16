@@ -1,0 +1,78 @@
+#border
+{
+    text-align:center;
+    margin:15px;
+    
+}
+
+
+img {
+    width: 270px;
+    border:15px solid black;
+    
+    
+  }
+
+  .restaurant_view
+  {
+      margin-left:40px;
+      margin-top:10px;
+      width:700px;
+      display: grid;
+     grid-template-columns: repeat(2, 1fr);
+      
+  }
+
+
+  h2
+  {
+      text-align:center;
+  }
+
+
+  .menuItem
+  {
+      border:3px solid black;
+      padding:30px;
+      width:350px;
+      height:200px;
+      margin:15px;
+      
+      
+      
+
+  }
+
+  .menuItem {
+    display: flex;
+    background-color: rgb(158, 195, 231);
+  }
+  
+  .menuItem > div {
+    background-color: #f1f1f1;
+    margin: 10px;
+    padding: 20px;
+    
+  }
+
+  ul li
+  {
+    list-style-type: none;
+  }
+
+  .padding
+  {
+      padding:30px;
+      
+  }
+
+  .LoginFirst
+  {
+    color:yellow;
+  }
+
+
+  
+
+  
+

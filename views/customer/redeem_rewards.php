@@ -54,7 +54,8 @@
             echo "<br><h3>You may proceed to redeem the rewards that are available</h3>";
     ?>
 
-     </div>       
+     </div>   
+    
      <div class="box2">
                 
             
@@ -70,9 +71,13 @@
                             <input type='hidden' name='reward_id' value=".$reward["id"].">
                             <input type='hidden' name='redeem_points' value=".$reward["redeem_points"].">
                             <input type='submit' value='Redeem Reward'>
+                            <div class = 'vertical'></div>
+                           
                         </form>
                         </td>";
+                    echo "<div class = 'vertical'></div>";        
                     echo "</tr>";
+                  
                 }
           
         }   //end else
@@ -83,14 +88,14 @@
     ?>
     </div>
 
-    <div class="box2">
+    <!-- <div class="box2">
        <p>Rewards Details</p>
     </div>
 
     <div class="box2">
        <p>Rewards</p>
-    </div>
-  
+    </div> -->
+   
 </section>
 </section>
 

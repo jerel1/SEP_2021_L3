@@ -1,20 +1,34 @@
-<?php
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/delivery/views/css/viewRestaurant.css">
+    <?php
     require_once "../header.php";
 
     //code snippet 4-2
     require_once "../../controllers/restaurantController.php";
     require_once "../../controllers/ordersController.php";
 
-$restaurant_id = $_GET["id"];
+    $restaurant_id = $_GET["id"];
 
-$restaurant = getRestaurantById($restaurant_id);
-?>
+    $restaurant = getRestaurantById($restaurant_id);
+    ?>
+</head>
 
 <body>
+
+   
     <div class="viewRestaurantPage">
     <!-- Replace the following h1 with code snippet 4-3 -->
     <section class="restaurant">
+    <div id="border">
     <img class="restaurant_img" src="<?='../uploaded_images/'.$restaurant['image']?>" alt="<?=$restaurant['image']?>">
+    
     <aside class="restaurant_description">
         <h3><?=$restaurant["name"];?></h3>
         <!-- the date function is to format the SQL time to more human-readable format.  -->
@@ -25,6 +39,9 @@ $restaurant = getRestaurantById($restaurant_id);
             Address: <?=$restaurant['address']?>
         </div>
     </aside>
+    </div>
+    <?php require_once "orders.php"?>
+  
 </section>
 <section class="restaurant_view">
 <?php
@@ -35,13 +52,16 @@ $restaurant = getRestaurantById($restaurant_id);
     if(count($items)==0) {
         echo "<p>There are no menu items in this restaurant</p>";
     } else {
-        echo "<h2>List of menu items</h2>";
-        echo "<ol class='restaurant_view menuItems'>";
+        // echo "<h2>List of menu items</h2>";
+        echo "<ul class='restaurant_view menuItems'>";
         foreach($items as $item) {
 ?>
+     <div id="flex">
             <li>
+               
                 <article class="menuItem">
-                    <div>
+
+                    <div class="padding">
                         <h3><?=$item["name"]?></h3>
                         <i><?=$item["description"]?></i><br>
                         
@@ -57,27 +77,32 @@ $restaurant = getRestaurantById($restaurant_id);
                             }
                         ?>
                     </div>
+
                     <div>
                         <form action="../../controllers/ordersController.php?function=add" method="POST">
                             <input type="hidden" name="item_id" value=<?=$item["id"]?>>
                             <!-- use the discounted price and not the price from db record -->
                             <input type="hidden" name="item_price" value=<?=$price?>>
-                            <input type="submit" value="Add">
+                            <input type="submit" value="+">
                         </form>
                     </div>
                 </article>
+                
             </li>
+      </div>
 <?php
         }
-        echo "</ol>";
+        echo "</ul>";
     }
 
     if(isset($_SESSION["orderPromptMessage"])) {
-        echo "<div>".$_SESSION["orderPromptMessage"]."</div>";
+        echo "<div class='LoginFirst'><p>".$_SESSION["orderPromptMessage"]."</p></div>";
         unset($_SESSION["orderPromptMessage"]);
     }
 ?>
 </section>
-<?php require_once "orders.php"?>
+
+
     </div>
 </body>
+</html>

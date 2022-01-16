@@ -1,5 +1,8 @@
 <?php
-    require_once "./header.php";
+    require_once "./views/header.php";
+    require_once "controllers/restaurantController.php";
+    require_once "controllers/itemController.php";
+    
 
     // code snippet 1-3
     if(isset($_SESSION["loggedInUser"])) {
@@ -9,11 +12,12 @@
             header("Location: ./views/admin/index.php");
         } else if($role=="merchant") {
             header("Location: ./views/merchant/index.php");
-        }  else if($role=="rider") {
+        } else if($role=="rider") {
             header("Location: ./views/rider/index.php");
         }
     }
 ?>
+
 <body>
     <!-- code snippet 4-13 -->
     <section class="searchSection">
@@ -22,10 +26,11 @@
         <input type="submit" value="Search">
     </form>
 </section>
-    <section class="restaurants">
-    <!-- Replace the following h1 with code snippet 4-1 -->
-    <?php
+<?php
+
+    $restaurants=getAllRestaurants();
     foreach($restaurants as $restaurant) {
+
 ?>
         <article class="restaurant">
             <img class="restaurant_img" src="<?='./views/uploaded_images/'.$restaurant['image']?>" alt="<?=$restaurant['image']?>">
@@ -40,5 +45,8 @@
 <?php         
     }
 ?>
-    </section>
+
+
+
+
 </body>

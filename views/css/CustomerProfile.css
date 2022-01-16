@@ -1,0 +1,43 @@
+#Contact
+{
+    border:3px solid black;
+    width:400px;
+    height:400px;
+    margin:0 auto;
+    text-align:center;
+    padding:40px;
+    margin-top:40px;
+}
+
+#Contact label
+{
+    line-height:12px;
+    margin:0 auto;
+    letter-spacing:.5px;
+    padding-bottom:28px;
+    font-size:18px;
+    color:#785A06;
+    font-family:Lato;
+    font-weight:bold;
+    text-decoration:none;
+    margin:50px;
+    line-height:20px;
+}
+
+
+button
+{
+    padding:6px;
+    background-color:black;
+    color:white;
+    text-align:center;
+}
+
+
+button:hover
+{
+    padding:6px;
+    background-color: rgb(158, 195, 231);
+    color:white;
+    text-align:center;
+}
