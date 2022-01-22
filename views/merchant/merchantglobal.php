@@ -2,8 +2,8 @@
 <link rel="stylesheet" href="merchantglobal.css">
 <?php
     require_once "../../controllers/restaurantController.php"; 
-    $restaurantid = $_GET["id"];
-    $restaurants = getAllRestaurantsByMerchant($restaurantid);  
+    $merchant_id = $_GET["id"];
+    $restaurants = getAllRestaurantsByMerchant($merchant_id);  
 ?>
 <nav id="navbar">
         <ul>
@@ -22,8 +22,10 @@
                 <!-- Overlay content -->
                 <div class="overlay-content">
                 <a href="../login.php">Login</a>
-                <a href="restaurantsales.php?id=<?=$restaurants['id']?>">Restaurant Sales</a>
-                </div>
+                <a href="restaurantsales.php?id=<?=$merchant_id?>">Restaurant Sales</a>
+                <a href="menu.php?id=<?=$merchant_id?>">Restaurant Menu</a>
+                <a href="restaurant.php?id=<?=$merchant_id?>">Edit Restaurant details</a>    
+            </div>
 
                 </div>
 

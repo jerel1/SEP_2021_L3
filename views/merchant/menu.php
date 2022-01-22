@@ -10,7 +10,6 @@
         require_once "merchantglobal.php";
         require_once "../../controllers/itemController.php";
         require_once "../../controllers/restaurantController.php";
-        session_start();
         ?>
 </head>
 <body>
