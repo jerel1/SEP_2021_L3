@@ -1,0 +1,18 @@
+.restaurant a img{
+    margin-bottom: 20px;
+}
+.restaurant input[type=file]{
+    margin-bottom: 20px;
+}
+.editrestaurant input{
+    margin-bottom: 20px;
+}
+.editrestaurant textarea{
+    vertical-align: top;
+}
+.editrestaurant select{
+    margin-bottom: 20px;
+}
+.editrestaurant input[type=submit]{
+    margin-top: 20px;
+}

@@ -1,8 +1,8 @@
 #navbar ul{
     display:flex;
-    justify-content: space-between;
+    justify-content: space-around;
     }
-#prfpic{
+#home{
     margin-right:951.5px;
 }
 #navbar ul li{
@@ -22,7 +22,7 @@
     color:red;
 }
 #navbar{
-    margin-bottom:221.5px;
+    margin-bottom: 170px;
 }
 .overlay {
     /* Height & width depends on how you want to reveal the overlay (see JS below) */   
@@ -101,6 +101,7 @@ header{
   width:230px;
   border:2px solid black;
   border-radius: 20px;
+  margin-right: 200px;
 }
 .restaurantName{
   text-decoration: none;

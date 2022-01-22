@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 30, 2021 at 04:47 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.11
+-- Host: 127.0.0.1:3306
+-- Generation Time: Jan 22, 2022 at 12:19 PM
+-- Server version: 5.7.36
+-- PHP Version: 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `fooddelivery`
+-- Database: `fooddelivery_l3`
 --
 
 -- --------------------------------------------------------
@@ -27,10 +27,12 @@ SET time_zone = "+00:00";
 -- Table structure for table `cuisines`
 --
 
-CREATE TABLE `cuisines` (
-  `id` int(11) NOT NULL,
-  `name` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `cuisines`;
+CREATE TABLE IF NOT EXISTS `cuisines` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `cuisines`
@@ -63,11 +65,13 @@ INSERT INTO `cuisines` (`id`, `name`) VALUES
 -- Table structure for table `customers`
 --
 
-CREATE TABLE `customers` (
+DROP TABLE IF EXISTS `customers`;
+CREATE TABLE IF NOT EXISTS `customers` (
   `user_id` int(11) NOT NULL,
   `mobileNumber` int(11) NOT NULL,
   `address` text NOT NULL,
-  `reward_points` int(11) DEFAULT 0
+  `reward_points` int(11) DEFAULT '0',
+  PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -84,21 +88,23 @@ INSERT INTO `customers` (`user_id`, `mobileNumber`, `address`, `reward_points`) 
 -- Table structure for table `items`
 --
 
-CREATE TABLE `items` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `items`;
+CREATE TABLE IF NOT EXISTS `items` (
+  `itemid` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `price` decimal(10,2) NOT NULL,
-  `discount` int(11) DEFAULT 0,
-  `restaurant_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `discount` int(11) DEFAULT '0',
+  `restaurant_id` int(11) NOT NULL,
+  PRIMARY KEY (`itemid`),
+  KEY `restaurant` (`restaurant_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `items`
 --
 
-INSERT INTO `items` (`id`, `name`, `description`, `price`, `discount`, `restaurant_id`) VALUES
-(1, 'Grilled Cajun Chicken', 'Comes with homemade mushroom sauce ', '8.90', 10, 1),
+INSERT INTO `items` (`itemid`, `name`, `description`, `price`, `discount`, `restaurant_id`) VALUES
 (2, 'Fried Breaded Fish ', 'Comes with tar tar sauce', '8.90', 0, 1),
 (3, 'Australian Grain Fed Sirloin Steak', 'Comes with black pepper sauce ', '13.50', 0, 1),
 (4, 'Grilled Chicken Aglio Olio', '', '7.90', 0, 1),
@@ -115,9 +121,6 @@ INSERT INTO `items` (`id`, `name`, `description`, `price`, `discount`, `restaura
 (15, 'Double Fillet-O-Fish Extra Value Meal', '', '8.00', 0, 4),
 (16, 'McSpicy® Extra Value Meal (M Fries)', '', '7.90', 0, 4),
 (17, 'McWings® 4pc Extra Value Meal (M Fries)', '', '6.95', 0, 4),
-(18, 'human feed size', '3 cold + 2 warm + 1 protein', '15.00', 0, 5),
-(19, 'vegman feed size', '3 cold + 3 warm + no add-on protein', '12.00', 0, 5),
-(20, 'j-box', 'lemon & garlic chicken, broccoli, mushroom, brown rice with sesame dressing', '11.00', 0, 5),
 (21, 'Hot Plate Saba Fish ', 'Saba Fish with rice kimchi & lime', '6.30', 0, 6),
 (22, 'Hot Plate Chicken ', 'Chicken with onions rice & kimchi', '7.30', 0, 6),
 (23, 'Bibimbap', 'Rice Seaweed Carrot Cucumber Egg Kimchi Bibimbap Sauce', '6.80', 0, 6),
@@ -129,7 +132,8 @@ INSERT INTO `items` (`id`, `name`, `description`, `price`, `discount`, `restaura
 (31, 'Tempura Udon ', 'Prawn tempura, chicken, onsen egg and spring onion', '7.50', 0, 7),
 (32, 'Unatama', 'BBQ unagi (eel) with egg rice bowl', '10.00', 0, 7),
 (33, 'Chicken Karaage Curry ', 'Crispy chicken served with Japanese curry', '8.50', 0, 7),
-(34, 'Chawanmushi', '', '2.20', 0, 7);
+(34, 'Chawanmushi', '', '2.20', 0, 7),
+(37, 'wwowowowow', '1111iidiidd', '10.00', 0, 12);
 
 -- --------------------------------------------------------
 
@@ -137,11 +141,14 @@ INSERT INTO `items` (`id`, `name`, `description`, `price`, `discount`, `restaura
 -- Table structure for table `jobs`
 --
 
-CREATE TABLE `jobs` (
+DROP TABLE IF EXISTS `jobs`;
+CREATE TABLE IF NOT EXISTS `jobs` (
   `rider_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `delivery_status` varchar(20) DEFAULT 'Assigned' COMMENT 'Assigned, On Delivery, Delivered',
-  `delivery_time` datetime DEFAULT NULL
+  `delivery_time` datetime DEFAULT NULL,
+  KEY `rider_id` (`rider_id`),
+  KEY `order_id` (`order_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -159,10 +166,12 @@ INSERT INTO `jobs` (`rider_id`, `order_id`, `delivery_status`, `delivery_time`) 
 -- Table structure for table `merchants`
 --
 
-CREATE TABLE `merchants` (
+DROP TABLE IF EXISTS `merchants`;
+CREATE TABLE IF NOT EXISTS `merchants` (
   `user_id` int(11) NOT NULL,
   `mobileNumber` int(11) NOT NULL,
-  `company` varchar(255) NOT NULL
+  `company` varchar(255) NOT NULL,
+  PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -171,7 +180,8 @@ CREATE TABLE `merchants` (
 
 INSERT INTO `merchants` (`user_id`, `mobileNumber`, `company`) VALUES
 (3, 91234567, 'Happy Meals'),
-(4, 81234567, 'MeEat');
+(4, 81234567, 'MeEat'),
+(22, 96428678, 'nanyang polytechnic');
 
 -- --------------------------------------------------------
 
@@ -179,9 +189,12 @@ INSERT INTO `merchants` (`user_id`, `mobileNumber`, `company`) VALUES
 -- Table structure for table `merchant_restaurant`
 --
 
-CREATE TABLE `merchant_restaurant` (
+DROP TABLE IF EXISTS `merchant_restaurant`;
+CREATE TABLE IF NOT EXISTS `merchant_restaurant` (
   `merchant_id` int(11) NOT NULL,
-  `restaurant_id` int(11) NOT NULL
+  `restaurant_id` int(11) NOT NULL,
+  KEY `merchant_id_idx` (`merchant_id`),
+  KEY `restaurant_id_idx` (`restaurant_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -192,9 +205,9 @@ INSERT INTO `merchant_restaurant` (`merchant_id`, `restaurant_id`) VALUES
 (3, 1),
 (3, 2),
 (3, 4),
-(4, 5),
 (4, 6),
-(4, 7);
+(4, 7),
+(22, 12);
 
 -- --------------------------------------------------------
 
@@ -202,16 +215,19 @@ INSERT INTO `merchant_restaurant` (`merchant_id`, `restaurant_id`) VALUES
 -- Table structure for table `orders`
 --
 
-CREATE TABLE `orders` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE IF NOT EXISTS `orders` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `customer_id` int(11) NOT NULL,
-  `amount` decimal(10,2) NOT NULL DEFAULT 0.00,
-  `order_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `checked_out` tinyint(1) NOT NULL DEFAULT 0,
+  `amount` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `order_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `checked_out` tinyint(1) NOT NULL DEFAULT '0',
   `delivery_date` date DEFAULT NULL,
   `delivery_time` time DEFAULT NULL,
-  `status` varchar(20) DEFAULT 'unassigned' COMMENT 'only assigned or unassigned'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `status` varchar(20) DEFAULT 'unassigned' COMMENT 'only assigned or unassigned',
+  PRIMARY KEY (`id`),
+  KEY `customerid` (`customer_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `orders`
@@ -234,11 +250,14 @@ INSERT INTO `orders` (`id`, `customer_id`, `amount`, `order_date`, `checked_out`
 -- Table structure for table `order_details`
 --
 
-CREATE TABLE `order_details` (
+DROP TABLE IF EXISTS `order_details`;
+CREATE TABLE IF NOT EXISTS `order_details` (
   `order_id` int(11) NOT NULL,
   `item_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
-  `amount` decimal(10,2) NOT NULL
+  `amount` decimal(10,2) NOT NULL,
+  KEY `orderid` (`order_id`),
+  KEY `itemid` (`item_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -252,20 +271,15 @@ INSERT INTO `order_details` (`order_id`, `item_id`, `quantity`, `amount`) VALUES
 (18, 22, 3, '21.90'),
 (18, 26, 1, '7.30'),
 (19, 29, 2, '19.80'),
-(19, 1, 1, '8.90'),
 (20, 8, 1, '11.50'),
 (20, 9, 2, '22.00'),
-(27, 1, 3, '24.03'),
 (29, 29, 1, '9.90'),
 (29, 34, 1, '2.20'),
-(30, 19, 1, '12.00'),
-(30, 18, 2, '30.00'),
 (31, 12, 2, '16.20'),
 (31, 21, 1, '6.30'),
 (32, 31, 2, '15.00'),
 (32, 32, 1, '10.00'),
-(32, 34, 1, '2.20'),
-(32, 18, 2, '30.00');
+(32, 34, 1, '2.20');
 
 -- --------------------------------------------------------
 
@@ -273,16 +287,19 @@ INSERT INTO `order_details` (`order_id`, `item_id`, `quantity`, `amount`) VALUES
 -- Table structure for table `restaurants`
 --
 
-CREATE TABLE `restaurants` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `restaurants`;
+CREATE TABLE IF NOT EXISTS `restaurants` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `open_hours` time NOT NULL,
   `close_hours` time NOT NULL,
   `cuisine_id` int(11) NOT NULL,
   `website` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
-  `address` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `address` text NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_idx` (`cuisine_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `restaurants`
@@ -292,9 +309,9 @@ INSERT INTO `restaurants` (`id`, `name`, `open_hours`, `close_hours`, `cuisine_i
 (1, 'ABC Western', '10:30:00', '21:00:00', 19, 'http://www.abc-western.com', 'ABC Western.jpg', '#01-13 Amoy Street Hawker Centre Singapore(521003)'),
 (2, 'KFC', '07:00:00', '21:00:00', 7, 'https://www.kfc.com.sg', 'KFC.jpg', '#02-01 Junction 8 Bishan Street 23 Singapore(541269)'),
 (4, 'McDonalds', '07:00:00', '21:00:00', 7, 'https://www.mcdonalds.com.sg/', 'McDonalds.jpg', '#01-11 51 @ AMK Singapore(569120)'),
-(5, 'Saladbrate', '11:00:00', '20:00:00', 9, 'http://letsaladbrate.sg', 'Saladbrate.jpg', '#03-01 Nex Shopping Centre Singapore(581021)'),
-(6, 'Seoul Good', '10:00:00', '22:00:00', 12, 'http://itzseoulgood.com', 'Seoul Good.jpg', '#02-03 AMK Hub Singapore(569188)'),
-(7, 'Ichiban', '10:30:00', '21:30:00', 11, 'http://www.ichiban.sg', 'Ichiban.jpg', '#04-05 Suntec Shopping Centre Tower 3 Singapore(590100)');
+(6, 'Seoul Good', '10:00:00', '22:00:00', 12, 'http://itzseoulgood.com', 'Seoul Good.jpg', '#02-03 AMK Hub Singapore(1569188)'),
+(7, 'Ichiban', '10:30:00', '21:30:00', 11, 'http://www.ichiban.sg', 'Ichiban.jpg', '#04-05 Suntec Shopping Centre Tower 3 Singapore(590100)'),
+(12, 'iajiajdjad', '10:00:00', '09:00:00', 2, 'fiefiifeiefie.com', 'oododffdkdk.jpg', 'iwfifeififiaf');
 
 -- --------------------------------------------------------
 
@@ -302,13 +319,15 @@ INSERT INTO `restaurants` (`id`, `name`, `open_hours`, `close_hours`, `cuisine_i
 -- Table structure for table `rewards`
 --
 
-CREATE TABLE `rewards` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `rewards`;
+CREATE TABLE IF NOT EXISTS `rewards` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `description` text NOT NULL,
   `cash_value` int(11) NOT NULL,
   `redeem_points` int(11) NOT NULL,
-  `availability` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `availability` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `rewards`
@@ -326,11 +345,14 @@ INSERT INTO `rewards` (`id`, `description`, `cash_value`, `redeem_points`, `avai
 -- Table structure for table `reward_redemption`
 --
 
-CREATE TABLE `reward_redemption` (
+DROP TABLE IF EXISTS `reward_redemption`;
+CREATE TABLE IF NOT EXISTS `reward_redemption` (
   `reward_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `redeemed_on` timestamp NOT NULL DEFAULT current_timestamp(),
-  `has_used` tinyint(1) NOT NULL DEFAULT 0
+  `redeemed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `has_used` tinyint(1) NOT NULL DEFAULT '0',
+  KEY `reward_id` (`reward_id`),
+  KEY `userid` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -338,11 +360,11 @@ CREATE TABLE `reward_redemption` (
 --
 
 INSERT INTO `reward_redemption` (`reward_id`, `user_id`, `redeemed_on`, `has_used`) VALUES
-(1, 7, '2020-05-27 07:14:54', 1),
-(2, 6, '2020-05-27 07:19:03', 0),
-(1, 6, '2020-05-27 07:19:08', 0),
-(2, 7, '2020-06-06 02:02:59', 0),
-(4, 7, '2020-06-06 02:59:33', 0);
+(1, 7, '2020-05-26 23:14:54', 1),
+(2, 6, '2020-05-26 23:19:03', 0),
+(1, 6, '2020-05-26 23:19:08', 0),
+(2, 7, '2020-06-05 18:02:59', 0),
+(4, 7, '2020-06-05 18:59:33', 0);
 
 -- --------------------------------------------------------
 
@@ -350,13 +372,15 @@ INSERT INTO `reward_redemption` (`reward_id`, `user_id`, `redeemed_on`, `has_use
 -- Table structure for table `riders`
 --
 
-CREATE TABLE `riders` (
+DROP TABLE IF EXISTS `riders`;
+CREATE TABLE IF NOT EXISTS `riders` (
   `user_id` int(11) NOT NULL,
   `mobile_number` int(11) NOT NULL,
   `vehicle_number` varchar(20) NOT NULL,
   `account_number` varchar(30) NOT NULL,
-  `amount_earned` decimal(10,2) DEFAULT 0.00,
-  `amount_withdrawn` decimal(10,2) DEFAULT 0.00
+  `amount_earned` decimal(10,2) DEFAULT '0.00',
+  `amount_withdrawn` decimal(10,2) DEFAULT '0.00',
+  PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -373,13 +397,15 @@ INSERT INTO `riders` (`user_id`, `mobile_number`, `vehicle_number`, `account_num
 -- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(128) NOT NULL,
   `email` varchar(128) NOT NULL,
   `password` varchar(256) NOT NULL,
-  `role` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `role` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
@@ -392,136 +418,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`) VALUES
 (6, 'Adam', 'adam@hotmail.com', '27b00d7dbc99124d1446740c9abd2aa1', 'customer'),
 (7, 'Stephen Ong', 'stephen@gmail.com', '081c89b33fe1cd7aff65d9db6c15b60e', 'customer'),
 (17, 'Kenneth Loh', 'ken@gmail.com', 'ccae7a2d10418ced10865b1592ab6c58', 'rider'),
-(18, 'Ronald Lee', 'ronald@gmail.com', 'f912fad688c7079f38ef9921ac51588e', 'rider');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `cuisines`
---
-ALTER TABLE `cuisines`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `customers`
---
-ALTER TABLE `customers`
-  ADD PRIMARY KEY (`user_id`);
-
---
--- Indexes for table `items`
---
-ALTER TABLE `items`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `restaurant` (`restaurant_id`);
-
---
--- Indexes for table `jobs`
---
-ALTER TABLE `jobs`
-  ADD KEY `rider_id` (`rider_id`),
-  ADD KEY `order_id` (`order_id`);
-
---
--- Indexes for table `merchants`
---
-ALTER TABLE `merchants`
-  ADD PRIMARY KEY (`user_id`);
-
---
--- Indexes for table `merchant_restaurant`
---
-ALTER TABLE `merchant_restaurant`
-  ADD KEY `merchant_id_idx` (`merchant_id`),
-  ADD KEY `restaurant_id_idx` (`restaurant_id`);
-
---
--- Indexes for table `orders`
---
-ALTER TABLE `orders`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `customerid` (`customer_id`);
-
---
--- Indexes for table `order_details`
---
-ALTER TABLE `order_details`
-  ADD KEY `orderid` (`order_id`),
-  ADD KEY `itemid` (`item_id`);
-
---
--- Indexes for table `restaurants`
---
-ALTER TABLE `restaurants`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_idx` (`cuisine_id`);
-
---
--- Indexes for table `rewards`
---
-ALTER TABLE `rewards`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `reward_redemption`
---
-ALTER TABLE `reward_redemption`
-  ADD KEY `reward_id` (`reward_id`),
-  ADD KEY `userid` (`user_id`);
-
---
--- Indexes for table `riders`
---
-ALTER TABLE `riders`
-  ADD PRIMARY KEY (`user_id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `cuisines`
---
-ALTER TABLE `cuisines`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
---
--- AUTO_INCREMENT for table `items`
---
-ALTER TABLE `items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
-
---
--- AUTO_INCREMENT for table `orders`
---
-ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
-
---
--- AUTO_INCREMENT for table `restaurants`
---
-ALTER TABLE `restaurants`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT for table `rewards`
---
-ALTER TABLE `rewards`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+(18, 'Ronald Lee', 'ronald@gmail.com', 'f912fad688c7079f38ef9921ac51588e', 'rider'),
+(22, 'jerel', '203665f@mymail.nyp.edu.sg', 'be3abfaebbcb2bf0de62a46ca600e202', 'merchant');
 
 --
 -- Constraints for dumped tables
@@ -569,7 +467,7 @@ ALTER TABLE `orders`
 -- Constraints for table `order_details`
 --
 ALTER TABLE `order_details`
-  ADD CONSTRAINT `itemid` FOREIGN KEY (`item_id`) REFERENCES `items` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `itemid` FOREIGN KEY (`item_id`) REFERENCES `items` (`itemid`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `orderid` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --

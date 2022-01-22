@@ -3,40 +3,9 @@
 <?php
     // require_once "../header.php";
     require_once "../../controllers/restaurantController.php";
+    require_once "merchantglobal.php";
 ?>
 <body>
-<nav id="navbar">
-        <ul>
-            <li>
-                <a href="fpaafk" id="prfpic">profilepic</a>
-            </li>
-            <li>
-                <a href="/SEP_2021_L3/delivery/views/index.php" id="home">Home</a>
-            </li>
-            <li>
-                <a href="../logout.php" id="logout">Logout</a>
-            </li>
-            <li>
-                <div id="myNav" class="overlay">
-
-                <!-- Button to close the overlay navigation -->
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-
-                <!-- Overlay content -->
-                <div class="overlay-content">
-                <a href="#">About</a>
-                <a href="#">Services</a>
-                <a href="#">Clients</a>
-                <a href="#">Contact</a>
-                </div>
-
-                </div>
-
-                <!-- Use any element to open/show the overlay navigation menu -->
-                <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
-            </li>
-        </ul>
-    </nav>
     <header>
         <h1>
     <?php

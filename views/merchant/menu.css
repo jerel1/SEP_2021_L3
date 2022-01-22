@@ -1,0 +1,22 @@
+#menuflex{
+    display:flex;
+    justify-content: space-around;
+    border: 1px solid black;
+}
+.viewRestaurantPage{
+    margin-left: 20px;
+}
+.restaurant_view ol li{
+    display:flex;
+}
+.restaurant_view ol li i{
+    margin-top: 20px ;
+    margin-right: 20px;
+}
+.restaurant_view ol li form{
+    margin-top: 15px ;
+    margin-right: 20px;
+}
+.restaurant_view ol li h3{
+    margin-right: 20px;
+}
