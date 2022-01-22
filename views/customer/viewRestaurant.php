@@ -39,7 +39,23 @@
             Address: <?=$restaurant['address']?>
         </div>
     </aside>
-    </div>
+    </div><br>
+    <form action="../../controllers/restaurantController.php?function=rateRestaurant" method="POST">
+
+        <label for="rating">Rate Restaurant:</label>
+
+        <select id="rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        </select>
+
+        <input type="submit" value="submit">
+
+    </form>
+
     <?php require_once "orders.php"?>
   
 </section>
