@@ -1,8 +1,10 @@
+
+
 #Contact
 {
     border:3px solid black;
-    width:400px;
-    height:400px;
+    width:500px;
+    height:600px;
     margin:0 auto;
     text-align:center;
     padding:40px;
@@ -11,7 +13,7 @@
 
 #Contact label
 {
-    line-height:12px;
+    
     margin:0 auto;
     letter-spacing:.5px;
     padding-bottom:28px;
@@ -20,7 +22,6 @@
     font-family:Lato;
     font-weight:bold;
     text-decoration:none;
-    margin:50px;
     line-height:20px;
 }
 
@@ -41,3 +42,4 @@ button:hover
     color:white;
     text-align:center;
 }
+
