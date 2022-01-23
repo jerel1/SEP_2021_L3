@@ -31,27 +31,43 @@
             echo "<ol class='orders'>";
             foreach($orders as $order) {
     ?>
+               
                 <li>
-                    <article class="order_item">
-                        <?php
-                            echo "<div>".$order["quantity"]." x ".$order["name"]." ( $".$order["amount"]." )</div>";
-                        ?>
-                    </article>
-                </li>
-    <?php
-            }
-            echo "</ol>";
-            // can use $order here because php will still hold reference to the last $order element in the foreach loop.
-            echo "<div><b>Total amount: $".$order["totalAmount"]."</b></div>";
-            $_SESSION["totalAmount"]=$order["totalAmount"];
+                <article class="order_item">
 
-            
-            echo "<div class='checkout'><a href='checkout.php?order_id=".$order["order_id"]."'><p>Checkout order</p></a></div>";
-            
-        } else {
-            echo "<h2>You do not have any orders at the moment</h2>";
-        }
-    ?>
+                    <?php
+                        echo "<div>  • ".$order["name"]." ( $".$order["amount"]." )</div>";
+                    ?>
+
+                    <form action="../../controllers/ordersController.php?function=deleteItem" method="POST">
+                        <input type="hidden" name = "order_id" value = "<?php echo $order['order_id']; ?>">
+                        <input type="hidden" name = "item_id" value = "<?php echo $order['item_id']; ?>">
+                        <input type="hidden" name = "qty" value = "<?php echo $order['quantity']; ?>">
+                        <input type="submit" value = "-">
+                    </form>
+
+                    <div> <?php echo $order["quantity"]; ?></div>
+
+                    <form action="../../controllers/ordersController.php?function=addItem" method="POST">
+                        <input type="hidden" name = "order_id" value = "<?php echo $order['order_id']; ?>">
+                        <input type="hidden" name = "item_id" value = "<?php echo $order['item_id']; ?>">
+                        <input type="hidden" name = "qty" value = "<?php echo $order['quantity']; ?>">
+                        <input type="submit" value = "+">
+                    </form>
+                    
+                </article>
+            </li>
+            <?php
+                    }
+                    echo "</ol>";
+                    // can use $order here because php will still hold reference to the last $order element in the foreach loop.
+                    echo "<div><b>Total amount: $".$order["totalAmount"]."</b></div>";
+                    $_SESSION["totalAmount"]=$order["totalAmount"];
+                    echo "<a href='checkout.php?order_id=".$order["order_id"]."'>Checkout order</a>";
+                } else {
+                    echo "<h2>Your cart is currently empty</h2>";
+                }
+            ?>
 
 </section>
 </body>
