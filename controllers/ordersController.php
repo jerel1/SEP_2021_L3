@@ -9,6 +9,14 @@
             case "add":
                 addOrder();
             break;
+            
+
+            case "deleteItem":
+                delete();
+            break;
+            case "addItem":
+                add();
+            break;
         }
     }
     
@@ -30,10 +38,10 @@
                     mysqli_query($conn, "INSERT into orders (customer_id) values ($customer_id)");
                     $order_id = mysqli_insert_id($conn);
                 }
-    
+
                 $item_id = $_POST["item_id"];
                 $item_price = $_POST["item_price"];
-    
+
                 $order_detail_query = mysqli_query($conn,"SELECT * from order_details where order_id=$order_id and item_id=$item_id");
                 $order_detail_query_result = mysqli_fetch_assoc($order_detail_query);
                 //if there exist the item in this particular order, then update the quantity and amouunt
@@ -42,7 +50,7 @@
                 } else {
                     mysqli_query($conn, "INSERT into order_details (order_id,item_id,quantity,amount) values($order_id,$item_id,1,$item_price)");
                 }
-    
+
                 //update total amount in orders table
                 mysqli_query($conn, "UPDATE orders set amount=amount+$item_price where id=$order_id");
                 
@@ -50,6 +58,8 @@
             }
         }
     }
+
+
 
     
     //code snippet 4-7
@@ -103,5 +113,62 @@
         }
         //return empty array if the customer is not logged in
         return array();
+    }
+
+
+    function delete(){
+        global $conn;
+        
+        $item_id = $_POST['item_id'];
+        $order_id = $_POST['order_id'];
+        $QTY = $_POST['qty'];
+
+        $query_price = mysqli_query ($conn, "SELECT price FROM items WHERE id = $item_id");
+        $price_item = mysqli_fetch_assoc($query_price);
+        $price_ = $price_item['price'];
+
+        if(($QTY-1) > 0)
+        {   
+            mysqli_query($conn, "UPDATE order_details SET amount = amount - $price_ WHERE order_id = $order_id AND item_id = $item_id");
+            $query = mysqli_query($conn, "UPDATE order_details SET quantity = quantity - 1 WHERE order_id = $order_id AND item_id = $item_id");
+        }
+        else
+        {
+            $query = mysqli_query($conn, "DELETE FROM order_details WHERE order_id = $order_id AND item_id = $item_id");
+        }
+        
+        if($query){
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        }
+        
+    }
+
+    function add(){
+        global $conn;
+        
+        $item_id = $_POST['item_id'];
+        $order_id = $_POST['order_id'];
+        $QTY = $_POST['qty'];
+
+        $query_price = mysqli_query ($conn, "SELECT price FROM items WHERE id = $item_id");
+        $price_item = mysqli_fetch_assoc($query_price);
+        $price_ = $price_item['price'];
+
+            mysqli_query($conn, "UPDATE order_details SET amount = amount + $price_ WHERE order_id = $order_id AND item_id = $item_id");
+            $query = mysqli_query($conn, "UPDATE order_details SET quantity = quantity + 1 WHERE order_id = $order_id AND item_id = $item_id");
+
+            $amount = mysqli_fetch_assoc(mysqli_query($conn, "SELECT SUM(amount) as total_amount FROM `order_details` WHERE order_id = $order_id"));
+            $total_amount = $amount['total_amount'];
+
+            mysqli_query($conn, "UPDATE orders SET amount= $total_amount WHERE id = $order_id");
+
+
+        
+        //echo $query;
+        
+        if($query){
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        }
+        
     }
 ?>

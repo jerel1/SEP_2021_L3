@@ -11,6 +11,10 @@
             case "register":
                 registerCustomer();
                 break;
+
+            case "update":
+               ProfileUpdate();
+            break;
         }
     }
 
@@ -40,7 +44,22 @@
     
 
     // code snippet 4-9
-    function updateProfile() {
+
+    function validate_file($fileType, $fileSize){
+        $filetype_limit = ['image/png', 'image/jpg','image/jpeg'];
+
+        $filesize_limit = 1000000; //bytes, 1MB
+
+        if (in_array($fileType, $filetype_limit) && $fileSize <= $filesize_limit){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    // code snippet 4-9
+    function ProfileUpdate() {
         global $conn;
         if(!empty($_POST)) {
             session_start();
@@ -50,17 +69,58 @@
             $password = $_POST["password"];
             $mobileNumber = $_POST["mobileNumber"];
             $address = $_POST["address"];
-    
-            mysqli_query($conn,"UPDATE users set name='$name', email='$email',password=MD5('$password') where id=$id");
+
+            if(!empty($_FILES['profilepic']['name']))
+            {
+                
+                $target_dir = "../views/uploaded_images/";
+                $target_file = $target_dir . basename($_FILES['profilepic']['name']);
+                
+                $file_name = basename($_FILES['profilepic']['name']);
+                $file_size = $_FILES['profilepic']['size'];
+                $file_type = $_FILES['profilepic']['type'];
+                $valid_file_type= validate_file($file_type,$file_size);
+
+                if ($valid_file_type){
+                    if (move_uploaded_file($_FILES['profilepic']['tmp_name'], $target_file)){
+                        mysqli_query($conn,"UPDATE users set name='$name', email='$email',password=MD5('$password'),profilepic='$file_name' where id=$id");
+                        
+                        //update the session variable as well to reflect changes on the UI
+                        $user = $_SESSION["loggedInUser"];
+                        $user["name"] = $name;
+                        $user["email"] = $email;
+                        $user["profilepic"] = $file_name;
+                        $_SESSION["loggedInUser"] = $user;
+                
+                        $_SESSION["updateProfileMessage"] = "Profile Updated Successfully!";
+                    }
+                    else{
+                        header('Location:'. $_SERVER['HTTP_REFERER']);
+                        $_SESSION["updateProfileMessage"] = "System Error";
+                    }
+                }
+                else{
+                    header('Location:'. $_SERVER['HTTP_REFERER']);
+                    $_SESSION["updateProfileMessage"] = "Invalid file type or file size";
+                    
+                }
+                
+
+               
+            }
+            else 
+            {
+                mysqli_query($conn,"UPDATE users set name='$name', email='$email',password=MD5('$password') where id=$id");
+                $user = $_SESSION["loggedInUser"];
+                $user["name"] = $name;
+                $user["email"] = $email;
+                $_SESSION["loggedInUser"] = $user;
+            }
+           
             mysqli_query($conn,"UPDATE customers set mobileNumber=$mobileNumber,address='$address' where user_id=$id");
+            
     
-            //update the session variable as well to reflect changes on the UI
-            $user = $_SESSION["loggedInUser"];
-            $user["name"] = $name;
-            $user["email"] = $email;
-            $_SESSION["loggedInUser"] = $user;
-    
-            $_SESSION["updateProfileMessage"] = "Updated profile successfully!";
+
             //go back to previous page
             header('Location: ' . $_SERVER['HTTP_REFERER']);
         }

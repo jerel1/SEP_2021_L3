@@ -26,6 +26,21 @@
                
                 <div id="Zoom"><h2>Your profile!</h2></div>
 
+                <div id = "profilePicture">
+                
+                <?php 
+                    if(!empty($user["profilepic"]))
+                    {
+                        ?>
+                        <img src="../uploaded_images/<?php echo $user["profilepic"] ?>" width='180' height='180' alt="<?php echo $user['profilepic'] ?>">
+                        <?php
+                    }
+                    else 
+                    {
+                        echo "<img src='../uploaded_images/profilepic.png' alt='default' width='180' height='180'>";
+                    }
+                ?>
+
                 
                 
                 
