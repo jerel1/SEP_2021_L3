@@ -50,8 +50,6 @@
             }
         }
     }
-
-    
     //code snippet 4-7
     function removeOutstandingOrders() {
         global $conn;

@@ -18,26 +18,6 @@
         }
     }
 
-    function ratingRestaurant()
-    {
-
-        global $conn;
-        if(!empty($_POST)) {
-            $merchant_id = $_SESSION["loggedInUser"]["id"];
-            $rating= $_POST["rating"];
-            $restaurant_id = $_GET["id"];
-            
-
-            // __DIR__ refer to the directory this file resides in.
-            mysqli_query($conn,"UPDATE restaurants SET Rating='$rating' WHERE id='$restaurant_id'");
-            $_SESSION["merchantHomeMessage"] = "Restaurant is added successfully!";
-            //go back to previous page
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
-
-        }
-
-    }
-
     // code snippet 3-2
     function addRestaurant() {
         global $conn;
