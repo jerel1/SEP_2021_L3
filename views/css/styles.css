@@ -49,8 +49,12 @@ nav ul li:not(:first-child) {
     width: 300px;
 }
 .restaurants {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    width: 80%;
+    height:180px;
+    margin: 0 auto;
 }
 .restaurants > * {
     margin-right: 30px;
