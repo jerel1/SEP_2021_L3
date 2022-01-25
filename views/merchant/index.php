@@ -1,15 +1,41 @@
 <link rel="stylesheet" href="merchantglobal.css">
     <script src="menu.js"></script>
 <?php
-    // require_once "../header.php";
+    // require_once "../header.php";\
+    session_start();
     require_once "../../controllers/restaurantController.php";
-    require_once "merchantglobal.php";
 ?>
 <body>
+<nav id="navbar">
+        <ul>
+            <li>
+                <a href="/delivery/views/merchant/index.php" id="home">Home</a>
+            </li>
+            <li>
+                <a href="../logout.php" id="logout">Logout</a>
+            </li>
+            <li>
+                <div id="myNav" class="overlay">
+
+                <!-- Button to close the overlay navigation -->
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+                <!-- Overlay content -->
+                <div class="overlay-content">
+                <a href="../login.php">Login</a>
+            </div>
+
+                </div>
+
+                <!-- Use any element to open/show the overlay navigation menu -->
+                <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+            </li>
+        </ul>
+    </nav>
     <header>
         <h1>
     <?php
-            session_start();
+            
             if(isset($_SESSION['loggedInUser'])) {
             $user = $_SESSION['loggedInUser'];
             $name = $user["name"]; 

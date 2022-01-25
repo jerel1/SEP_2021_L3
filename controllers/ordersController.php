@@ -58,10 +58,13 @@
             }
         }
     }
+<<<<<<< HEAD
+=======
 
 
 
     
+>>>>>>> 67dcb78e1b90f38e3729ac25352958db43f358fc
     //code snippet 4-7
     function removeOutstandingOrders() {
         global $conn;
