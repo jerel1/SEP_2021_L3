@@ -28,6 +28,7 @@
         $orders = getCustomerCurrentOrder();
         if(count($orders)>0) {
             echo "<h2>My orders</h2>";
+            echo "<h4>$5 Delivery Charge will be applied for orders below $40</h4>";
             echo "<ol class='orders'>";
             foreach($orders as $order) {
     ?>

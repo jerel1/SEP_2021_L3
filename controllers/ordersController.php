@@ -140,6 +140,19 @@
         if($query){
             header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
+
+        $amount = mysqli_fetch_assoc(mysqli_query($conn, "SELECT SUM(amount) as total_amount FROM `order_details` WHERE order_id = $order_id"));
+            $total_amount = $amount['total_amount'];
+
+            if($total_amount<=40)
+            {
+                mysqli_query($conn, "UPDATE orders SET amount= $total_amount+5 WHERE id = $order_id");
+            }
+
+            else
+            {
+                mysqli_query($conn, "UPDATE orders SET amount= $total_amount WHERE id = $order_id");
+            }
         
     }
 
@@ -160,7 +173,17 @@
             $amount = mysqli_fetch_assoc(mysqli_query($conn, "SELECT SUM(amount) as total_amount FROM `order_details` WHERE order_id = $order_id"));
             $total_amount = $amount['total_amount'];
 
-            mysqli_query($conn, "UPDATE orders SET amount= $total_amount WHERE id = $order_id");
+            if($total_amount<=40)
+            {
+                mysqli_query($conn, "UPDATE orders SET amount= $total_amount+5 WHERE id = $order_id");
+            }
+
+            else
+            {
+                mysqli_query($conn, "UPDATE orders SET amount= $total_amount WHERE id = $order_id");
+            }
+ 
+            
 
 
         
