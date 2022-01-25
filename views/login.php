@@ -18,7 +18,7 @@
     </div>
 
     <section id="Customer">
-        <form action="../controllers/loginController.php?role=<?=$role?>" method="POST">
+        <form action="../controllers/loginController.php" method="POST">
         <div id="Contact">
         <div id="form-control">
                     <label>Email</label>
