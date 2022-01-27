@@ -42,9 +42,20 @@
                     }
                     
                 ?>
-                <li>
-                    <input id="search" type="search" placeholder="Search" width="50px" autofocus required />
-                </li>
+                 <?php
+                // if the user is in index page, the action stays in index page, else, redirect it to index page
+                    $action = "../index.php";
+                    if(strpos($_SERVER['REQUEST_URI'], 'index') == true)
+                    {
+                        $action = '#';
+                    }
+                ?>
+                <section class="searchSection">
+                    <form method="post" action= <?php echo $action; ?>>
+                        <input type="text" name="search" id="search" size="40" placeholder="Search for restaurants...">
+                        <input class="searchBtn" type="submit" value="Search">
+                    </form>
+                </section>
                 </div>
             </ul>
         </nav>

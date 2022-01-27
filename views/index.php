@@ -1,8 +1,6 @@
 <?php
     require_once "./views/header.php";
-    require_once "controllers/restaurantController.php";
-    require_once "controllers/itemController.php";
-    
+    require_once "./controllers/restaurantController.php";
 
     // code snippet 1-3
     if(isset($_SESSION["loggedInUser"])) {
@@ -12,11 +10,11 @@
             header("Location: ./views/admin/index.php");
         } else if($role=="merchant") {
             header("Location: ./views/merchant/index.php");
-        } else if($role=="rider") {
+        }  else if($role=="rider") {
             header("Location: ./views/rider/index.php");
         }
     }
-
+    
     if(isset($_POST['search']))
     {
         $restaurants = searchRestaurants($_POST['search']);
@@ -24,13 +22,14 @@
         $restaurants = getAllRestaurants();
     }
 ?>
-
 <body>
 <?php
         if(isset($_POST['search']) && $_POST['search']!="") {
             echo "Showing search results for \"". $_POST['search'] . "\"<br><br>";
         }
-    ?>    
+    ?>
+    
+ 
     <section class="restaurants">
 
     <?php
@@ -43,14 +42,13 @@
                     <i><?=$restaurant['address']?></i><br><br>
                     Opened from <?=date("h:i A",strtotime($restaurant["open_hours"]))?> to <?=date("h:i A",strtotime($restaurant["close_hours"]))?><br><br>
                     Type of cuisine: <strong><?=$restaurant['cuisine']?></strong><br>
-                    Website: <a href="<?=$restaurant['website']?>" target="_blank"><?=$restaurant['website']?></a><br>
+                    Website: <a href="<?=$restaurant['website']?>" target="_blank"><?=$restaurant['website']?></a><br>       
+                    Average Rating: <?=$restaurant['Rating']?>
                 </aside>
             </article>
     <?php         
         }
     ?>
     </section>
-
-
 
 </body>

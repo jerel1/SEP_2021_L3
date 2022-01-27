@@ -3,6 +3,17 @@
     margin: 0;
 }
 
+.ckoutdetail
+{
+    color:blue;
+    font-weight:bold;
+}
+
+.imageBorder
+{
+    border:10px solid lightBlue;
+}
+
 h1,h2,h3,h4 {
     margin-bottom: 20px;
 }
@@ -45,8 +56,20 @@ nav ul li:not(:first-child) {
 .addRestaurantSection {
     display: none;
 }
-.restaurant, .restaurant_img {
+.restaurant{
     width: 300px;
+    border-radius:10px;
+  
+    
+
+}
+
+.restaurant_img {
+    width: 300px;
+    border-radius:10px;
+    border:12px solid lightblue;
+    
+
 }
 .restaurants {
     display: grid;
