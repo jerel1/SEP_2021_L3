@@ -8,7 +8,7 @@
 <nav id="navbar">
         <ul>
             <li>
-                <a href="/delivery/views/merchant/index.php" id="home">Home</a>
+                <a href="index.php" id="home">Home</a>
             </li>
             <li>
                 <a href="../logout.php" id="logout">Logout</a>

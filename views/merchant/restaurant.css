@@ -16,3 +16,21 @@
 .editrestaurant input[type=submit]{
     margin-top: 20px;
 }
+.restaurant_description h3{
+    font-size: 30px;
+    text-align: center;
+}
+.restaurant_description div{
+    font-size: 30px;
+    text-align: center;
+}
+.restaurantall{
+    display:flex;
+    justify-content:center; 
+}
+#edit{
+    text-align: center;
+}
+#delete{
+    text-align: center;
+}

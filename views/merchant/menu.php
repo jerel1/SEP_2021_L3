@@ -17,7 +17,6 @@
 <?php
 
 $restaurant_id = $_GET["id"];
-$edit = isset($_POST["edit"]);
 $restaurant = getRestaurantById($restaurant_id);
 ?>
 
@@ -43,45 +42,52 @@ $restaurant = getRestaurantById($restaurant_id);
     if(count($items)==0) {
         echo "<p>There are no menu items in this restaurant</p>";
     } else {
-        echo "<h2>List of menu items</h2>";
         echo "<ol class='restaurant_view menuItems'>";
-        if(!$edit){
+        ?>
+            <Legend><?php echo "<h2>List of menu items</h2>"?></Legend>
+            <table>
+        <?php
         foreach($items as $item) {    
         ?>
-            <li>
-                        <h3><?=$item["name"]?></h3>
-                        <i><?=$item["description"]?></i><br>
-                        <h3>
-                        <?php
-                            $disc = $item["discount"];
-                            $price = $item["price"];
-                                //round to two decimal points
-                                $price = round($price*(100-$disc)/100,2);
-                                if($disc==0){
-                                    echo "Price: $".$item["price"]."(".$disc."% discount)";
-                                }
-                                else{
-                                    echo "Price: $".$price." <strike>$".$item["price"]."</strike> (".$disc."% discount)";
-                                }
-
-                            
-                        ?>
-                        </h3>
-                        <form method='post' action='edititem.php?id=<?=$restaurant["id"]?>&itemid=<?=$item["itemid"]?>'>
+        <tr>
+            <th>Item Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Edit or Delete</th>
+        </tr>
+        <tr>
+            <td><h3><?=$item["name"]?></h3></td>
+            <td><i><?=$item["description"]?></i></td>
+            <td><?php $disc = $item["discount"];
+            $price = $item["price"];
+            $price = round($price*(100-$disc)/100,2);
+            //round to two decimal points
+            if($disc==0){
+                echo "Price: $".$item["price"]."(".$disc."% discount)";
+            }
+            else{
+                echo "Price: $".$price." <strike>$".$item["price"]."</strike> (".$disc."% discount)";
+            }
+            ?></td>
+            <td>             <form method='post' action="edititem.php?id=<?=$restaurant["id"]?>&itemid=<?=$item["itemid"]?>">
                             <input type="hidden" name="item_id" value=<?=$item["itemid"]?>>
                             <!-- use the discounted price and not the price from db record -->
                             <input type="hidden" name="item_price" value=<?=$price?>>
                             <input type="submit" name="edit" value="Edit" id="edit">
-                            </form>
-                            <form action="../../controllers/itemController.php?function=Delete&itemid=<?=$item["itemid"]?>" method='post' onsubmit="return confirmDelete();">
+                            </form><br>
+                            <form action="../../controllers/itemController.php?function=DeleteItem&itemid=<?=$item["itemid"]?>" method='post' onsubmit="return DeleteItem();">
                             <input type="submit" name="delete" value="Delete">
                         </form>
-            </li>
-                            <?php }
+                    </td>
+        </tr>
+                            <?php 
+                        }
+                        ?>
+                            </table>
+                        <?php    
+                        }
                             echo "</ol>";
-                            }
-                            
-                        }?>
+                            ?>
                         
                         
                         

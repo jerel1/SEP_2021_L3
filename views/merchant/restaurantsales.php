@@ -6,6 +6,7 @@
       
 ?>
 <body>
+    <link rel="stylesheet" href="restaurantsales.css">
     <section>
     <!-- Replace the following h1 with code snippet 2-5 -->
     <h1>Restaurants Sales</h1>

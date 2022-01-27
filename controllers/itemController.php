@@ -1,6 +1,17 @@
 <?php
     require_once __DIR__."/../connection.php";
 
+    if(isset($_GET["function"])) {
+        $function = $_GET["function"];
+        switch($function) {
+            case "EditItem":
+                EditItem();
+                break;
+            case "DeleteItem":
+                    DeleteItem();
+                    break;
+        }
+    }
     // code snippet 2-3
     function getAllItemsFromRestaurant($id) {
         global $conn;
@@ -30,12 +41,12 @@
             $description = $_POST["description"];
             $discount = $_POST["discount"];
             $price = $_POST["price"];
-            $query = mysqli_query($conn,"UPDATE items set name = $name, description = $description, price = $price, discount = $discount where itemid = $item_id");
+            $query = mysqli_query($conn,"UPDATE items set name = '$name', description = '$description', price = '$price', discount = '$discount' where itemid = '$item_id'");
             if($query){
-                header('Location: ' . $_SERVER['HTTP_REFERER']);
+               header('Location: ' . $_SERVER['HTTP_REFERER']);
             }
             else{
-                echo "$query";
+                header('Location: ' . $_SERVER['HTTP_REFERER']);
             }
         }
     }
@@ -43,7 +54,8 @@
         global $conn;
         if(!empty($_GET)){
             $item_id = $_GET["itemid"];
-            mysqli_query($conn,"DELETE from items where itemid=$item_id");
+            mysqli_query($conn,"DELETE from items where itemid='$item_id'");
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
     }
 ?>

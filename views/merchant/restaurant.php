@@ -14,6 +14,7 @@ $restaurant = getRestaurantById($restaurant_id);
     <?php
     $edit = isset($_POST["edit"]);
 ?>
+<div class="restaurantall">
 <div id="restaurant">
     <h2>Click here to see the menu!!!!</h2>
     <a href="menu.php?id=<?=$restaurant['id']?>"><img class="restaurant_img" src="<?='../uploaded_images/'.$restaurant['image']?>" alt="<?=$restaurant['image']?>"></a>
@@ -30,12 +31,13 @@ $restaurant = getRestaurantById($restaurant_id);
         ?>
                 <h3><?=$restaurant["name"];?></h3>
                 <!-- the date function is to format the SQL time to more human-readable format.  -->
-                <div>Opened from <?=date("h:i A",strtotime($restaurant["open_hours"]))?> to <?=date("h:i A",strtotime($restaurant["close_hours"]))?></div><br>
+                <div>Opened from <?=date("h:i A",strtotime($restaurant["open_hours"]))?> to <?=date("h:i A",strtotime($restaurant["close_hours"]))?></div>
                 <div>
-                    Type of cuisine: <?=$restaurant['cuisine']?><br><br>
-                    Website: <a href="<?=$restaurant['website']?>" target="_blank"><?=$restaurant['website']?></a><br><br>
-                    Address: <?=$restaurant['address']?><br><br>
+                    Type of cuisine: <?=$restaurant['cuisine']?><br>
+                    Website: <a href="<?=$restaurant['website']?>" target="_blank"><?=$restaurant['website']?></a><br>
+                    Address: <?=$restaurant['address']?><br>
                 </div>
+                <br>
         <?php
             } else {
         ?>     <div class="editrestaurant">
@@ -67,19 +69,20 @@ $restaurant = getRestaurantById($restaurant_id);
         <?php
             }
         ?>
-        </div>
+
     <?php
         if(!$edit) {
     ?>
-        <form method="post">
+        <form method="post" id="edit">
             <input type='submit' name="edit" id='edit' value='Edit restaurant information'>
         </form>
-        <form action="../../controllers/restaurantController.php?function=removeRestaurant&id=<?=$restaurant["id"]?>" method='post' onsubmit="return confirmDelete();">
+        <form action="../../controllers/restaurantController.php?function=removeRestaurant&id=<?=$restaurant["id"]?>" method='post' onsubmit="return confirmDelete();" id="delete">
             <input type='submit' name='delete' value='Delete restaurant'>
         </form>
     <?php
         }
     ?>
+            </div>
     <div>
         <?php
             if(isset($_SESSION["restaurantUpdateMsg"])) {
@@ -107,4 +110,5 @@ $restaurant = getRestaurantById($restaurant_id);
         return ans;
     }
 </script>  
+</div>
 </body>
