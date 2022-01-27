@@ -15,8 +15,75 @@
             case "removeRestaurant":
                 deleteRestaurant();
             break;
+
+            case "rateRestaurant":
+                ratingRestaurant();
+            break;
+
+            case "Rating":
+                ratingRestaurant();
+            break;
         }
     }
+
+    function ratingRestaurant()
+    {
+
+                global $conn;
+           
+                $restaurant_id = $_GET["id"];
+                $rating= $_POST["rating"];
+                //echo"<br>you have chosen $rating";/
+                $ratingValue = mysqli_query($conn,"SELECT Rating from restaurants WHERE id=2");
+                $rating_fetch= mysqli_fetch_assoc($ratingValue);
+
+                $raters = mysqli_query($conn,"SELECT Raters FROM restaurants WHERE id=2");
+                $raters_num = mysqli_fetch_assoc($raters);
+                $raters_final=(int)$raters_num;
+
+                mysqli_query($conn,"UPDATE restaurants SET Raters=$raters_final+1 WHERE id=2");
+
+                $average=((int)$rating_fetch+(int)$rating)/$raters_final;
+                mysqli_query($conn,"UPDATE restaurants SET Rating=$average WHERE id=2");
+
+                header('Location: ' . $_SERVER['HTTP_REFERER']);
+                
+
+            /* mysqli_query($conn,"UPDATE restaurants SET Raters=$raters_num+1 WHERE id=1");
+            echo"<br>Raters num is $raters_num"; */
+
+
+            /* $ratingValue = mysqli_query($conn,"SELECT Rating from restaurants WHERE id='$restaurant_id");
+            $rating_fetch= mysqli_fetch_assoc($ratingValue);
+
+            $average=($rating_fetch+$rating)/$raters_num;
+
+            mysqli_query($conn,"UPDATE restaurants SET Rating=$average WHERE id='$restaurant_id'");
+            mysqli_query($conn,"UPDATE restaurants SET Raters=$raters_num+1 WHERE id='$restaurant_id'");
+            echo"<br>Average is $average"; */
+            
+
+    }
+
+    function getRating()
+    {
+
+        global $conn;
+        if(!empty($_GET)) {
+            $restaurant_id = $_GET["id"];
+            
+    
+            global $conn;
+            $query = mysqli_query($conn,"SELECT Rating FROM restaurants WHERE  $restaurant_id");
+            $result = mysqli_fetch_all($query, MYSQLI_ASSOC); 
+            return $result;
+    
+           
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        }
+        
+    }
+
 
     // code snippet 3-2
     function addRestaurant() {

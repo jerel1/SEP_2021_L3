@@ -23,6 +23,7 @@
 <body>
 
    
+
     <div class="viewRestaurantPage">
     <!-- Replace the following h1 with code snippet 4-3 -->
     <section class="restaurant">
@@ -36,20 +37,25 @@
         <div>
             Type of cuisine: <?=$restaurant['cuisine']?><br>
             Website: <a href="<?=$restaurant['website']?>" target="_blank"><?=$restaurant['website']?></a><br>
-            Address: <?=$restaurant['address']?>
+            Address: <?=$restaurant['address']?><br>
+            Rating: <?=$restaurant['Rating']?>
+            
+            
         </div>
     </aside>
     </div><br>
-    <form action="../../controllers/restaurantController.php?function=rateRestaurant" method="POST">
+    
+    <form action="../../controllers/restaurantController.php?function=Rating" method="POST">  
+        
+        <label for="Rating">Rate Restaurant:</label>
 
-        <label for="rating">Rate Restaurant:</label>
-
-        <select id="rating">
+        <select name="rating">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
         <option value="5">5</option>
+
         </select>
 
         <input type="submit" value="submit">
@@ -87,7 +93,7 @@
                             if($disc==0) {
                                 echo "Price: $".$price;
                             } else {
-                                //round to two decimal points
+                            
                                 $price = round($price*(100-$disc)/100,2);
                                 echo "Price: $".$price." <strike>$".$item["price"]."</strike> (".$disc."% discount)";
                             }
@@ -95,13 +101,33 @@
                     </div>
 
                     <div>
-                        <form action="../../controllers/ordersController.php?function=add" method="POST">
-                            <input type="hidden" name="item_id" value=<?=$item["id"]?>>
-                            <!-- use the discounted price and not the price from db record -->
-                            <input type="hidden" name="item_price" value=<?=$price?>>
-                            <input type="submit" value="+">
-                        </form>
+                            <?php
+                            date_default_timezone_set("Asia/Singapore");
+
+                            $current = date("H:i:s");
+                            $future = date("H:i:s",strtotime('+15 minutes', strtotime($current)));
+
+                                if($future <= date("H:i:s",strtotime($restaurant['open_hours'])))
+                                {
+
+                                }
+                                else
+                                {
+                                    ?>
+                                    <form action="../../controllers/ordersController.php?function=add" method="POST">
+                                        <input type="hidden" name="item_id" value=<?=$item["id"]?>>
+                                        <input type="hidden" name="item_price" value=<?=$price?>>
+                                        <input type="submit" value="+">
+                                    </form> 
+                                    <?php
+                                }
+                            ?>
                     </div>
+
+                    <div>
+                            
+                                       
+                    
                 </article>
                 
             </li>

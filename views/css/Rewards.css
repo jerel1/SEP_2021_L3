@@ -1,31 +1,53 @@
 .box
 {
-  border:6px solid red;
-  width:1050px;
-  height:200px;
+  border: 4px solid red;
+  width:auto;
+  height:auto;
   margin:30px;
   padding:50px;
 }
 
-.box2
+.reward_row
 {
-  border:3px solid green;
-  width:1050px;
-  height:200px;
-  margin:30px;
+  /* border:3px solid green; */
+  background-color: lightgreen;
+  width:auto;
+  height:auto;
+  margin: 30px;
   padding:50px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.25em;
 }
 
-input[type="submit"]
+
+
+input.reward_redeem
 {
-    
-    margin-left:850px;
     border-radius: 0.3em;
     background-color: #A18314;
     color: white;
     font-size: 17px;
     padding:10px;
-    
+}
 
+p.reward_top{
+  font-size: 1.4em;
+  font-family: Arial, sans-serif;
+  text-align:center;
 
+  
+}
+
+h1.reward_top{
+  font-size: 1.8em;
+  margin-bottom:10px;
+  margin-top:25px;
+  color:red;
+  text-align:center;
+}
+
+.box2{
+  font-size: 1.3em;
+  color: red;
 }

@@ -17,9 +17,35 @@
             case "addItem":
                 add();
             break;
+            case "checkOut":
+                CheckOutOrder();
+            break;
         }
     }
     
+
+    function CheckOutOrder(){
+        global $conn;
+        date_default_timezone_set("Asia/Singapore");
+        $d=strtotime("Now");
+
+        $deliveryDateTime = isset($_POST['_dt'])?$_POST['_dt']:date('Y-m-d\TH:i:s',$d);
+
+        $formatedDT = explode('T', $deliveryDateTime);
+        /* $deliveryDate = $formatedDT[0];
+        $deliveryTime = $formatedDT[1]; */
+        $orderID = $_POST['orderID'];
+
+        echo $query = "UPDATE orders SET checked_out = '1' WHERE orders.id = $orderID";
+        mysqli_query($conn, $query);
+        
+        if($query){
+            header('Location:../views/customer/checkout.php?order_id='.$orderID);
+        }else{
+            echo $query;
+        }
+    }
+
     function addOrder() {
         global $conn;
         if(!isset($_SESSION["loggedInUser"])) {
@@ -57,6 +83,22 @@
                 header('Location: ' . $_SERVER['HTTP_REFERER']);
             }
         }
+    }
+
+    function getAllManageOrders(){
+        global $conn;
+        $order_query = mysqli_query($conn,"SELECT o.*, c.name FROM orders o INNER JOIN users c ON o.customer_id = c.id where checked_out=1 order by order_date DESC");
+        $order_query_result = mysqli_fetch_all($order_query, MYSQLI_ASSOC);
+        return $order_query_result;
+    }
+
+    function searchbyorderNumber($name)
+    {
+        global $conn;
+        
+        $query = mysqli_query($conn,"SELECT o.*, c.name FROM orders o INNER JOIN users c ON o.customer_id = c.id where o.checked_out=1 AND o.id like '%$name%' order by o.order_date DESC");
+        $result = mysqli_fetch_all($query, MYSQLI_ASSOC); 
+        return $result;
     }
 
 
@@ -156,6 +198,31 @@
         
     }
 
+    function chargeAdditionFee($order_id)
+    {
+        global $conn;
+
+        $query = "UPDATE orders SET delivery_fee = 5 WHERE id = $order_id";
+        mysqli_query($conn, $query);
+    }
+
+    function removeAdditionFee($order_id)
+    {
+        global $conn;
+
+        $query = "UPDATE orders SET delivery_fee = 0 WHERE id = $order_id";
+        mysqli_query($conn, $query);
+    }
+
+    function returnSingleOrderItem($order_id)
+    {
+        global $conn;
+
+        $query = "SELECT items.name, order_details.amount ,order_details.quantity FROM items CROSS JOIN order_details ON items.id = order_details.item_id WHERE order_details.order_id = $order_id";
+        return mysqli_fetch_assoc(mysqli_query($conn, $query));
+    }
+
+
     function add(){
         global $conn;
         
@@ -194,4 +261,13 @@
         }
         
     }
+
+    function GetOrderById($oid){
+        global $conn;
+
+        $query = "SELECT * FROM orders WHERE id = $oid";
+        return mysqli_fetch_assoc(mysqli_query($conn, $query));
+    }
+
+    
 ?>

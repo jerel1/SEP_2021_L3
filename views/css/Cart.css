@@ -1,14 +1,40 @@
 .cart
 {
-    border:4px solid black;
-    width:280px;
+    border:10px solid black;
+    width:300px;
     margin:0 auto;
     text-align:center;
     padding:30px;
     margin-top:60px;
-    height:220px;
+    height:auto;
 }
 
+
+#style
+{
+    clear:both;
+    font-size:53px;
+}
+
+.DD
+{
+    font-size:20px;
+}
+
+input#datetimebox.delv
+{
+    width:165px;
+}
+
+
+.vl {
+    border-left: 60px solid green;
+    height: 500px;
+    position: absolute;
+    left: 50%;
+    margin-left: -3px;
+    top: 0;
+  }
 ol li
 {
     list-style-type: none;
@@ -23,14 +49,16 @@ ol li
    
 }
 
-ol.orders
+/*  .orders
 {
 
     text-align:center;
     margin:0 auto;
-    
+    display: flex;
+    justify-content: space-around;
+    margin-top: 80px;   
 }
-
+ */
 .checkout
 {
    
@@ -57,4 +85,100 @@ ol.orders
     text-align:center;
     color:white;
 
+}
+
+.order_info{
+    display: flex;
+    flex-direction: column;
+}
+
+.total_amt{
+    margin-top: 20px;
+}
+
+/* -------------------------------- */
+
+
+#cartflex{
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+    border-bottom: 1px solid black;
+    padding: 10px;
+    justify-content: space-evenly;
+    color:darkblue;
+    background-color:lightblue;
+}
+
+#cartTXT
+{
+    align-self: center;
+    width: 40%;
+}
+
+#cartname{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#cartucost
+{
+    align-self: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+#carttcost
+{
+    align-self: center;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#cartform
+{
+    align-self: center;
+}
+
+#cartnum{
+    width: 130px;
+}
+
+.cartBTN{
+    color: cornflowerblue;
+    border: none;
+    background-color: transparent;
+    font-size: 1.1em;
+}
+
+.cartBTN:hover{
+    border-bottom: 2px solid cornflowerblue;
+}
+
+#cartcal{
+    position: relative;
+    left: 70%;
+    margin-top: 10px;
+}
+
+#checkout{
+    position: relative;
+    margin-top: 10px;
+    left: 315px;
+}
+
+.cartval{
+    font-size: 1.2em;
+}
+
+#checkoutBTN{
+    background-color: #C73131;
+    color: white;
+    font-size: 1.1em;
+    border-radius: 10px;
+}
+
+#carttotal{
+    font-weight: bold;
 }

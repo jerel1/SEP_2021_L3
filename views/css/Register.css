@@ -2,19 +2,19 @@ main
 {
   width:100%;
 }
-
+ 
 #profilePicture
 {
-    
+   
     height: 100px;
     width: 100px;
     margin: 10px auto;
     border-radius: 55%;
     margin-left:200px;
 }
-
-
-
+ 
+ 
+ 
 #profilePicture img{
     height: auto;
     width: 100px;
@@ -23,66 +23,67 @@ main
     border-radius: 50%;
     margin-left:180px;
 }
-
+ 
 input[type='file']
 {
     margin-left:340px;
 }
-
-
-
+ 
+ 
+ 
 #middle
 {
     margin-left:180px;
 }
-
+ 
 #Login
 {
     text-align:center;
 }
-
+ 
 button
 {
-    
+   
     border-radius: 0.3em;
     /* margin: 6px; */
     /* background-color: #A18314; */
-    color: white;
+    color: black;
     font-size: 17px;
     padding: 10px;
     width: 180px;
     height: 60px;
     margin-left:200px;
-
+    border:5px solid black;
+ 
 }
-
-
-
+ 
+ 
+ 
 #Center label
 {
     text-align:center;
 }
-
-
+ 
+ 
 #state
 {
     text-align:center;
-    
+   
 }
-
+ 
 #viewImage{
     width: 100%;
     height: auto;
     object-fit: contain;
 }
-
+ 
 #Zoom h2
 {
     font-family:Arial;
     text-align:center;
-    
+   
 }
-
+ 
 #box
 {
     border:3px solid black;
@@ -90,23 +91,23 @@ button
     width:300px;
     height:140px;
     margin-top:30px;
-
+ 
 }
-
+ 
 #box p
 {
     text-align:center;
     margin-top:40px;
 }
-
-.customerRegSectioninput 
+ 
+.customerRegSectioninput
 {
   text-align:center;
 }
-
+ 
 #Customer input[type="submit"]
 {
-    
+   
     margin:0 auto;
     border-radius: 0.3em;
     /* margin: 6px; */
@@ -116,30 +117,30 @@ button
     padding:10px;
     width:180px;
     height:60px;
-    
-    
-
-
+   
+   
+ 
+ 
 }
-
+ 
 .Logon
 {
     width:100%;
     margin:0 auto;
     text-align:center;
 }
-
+ 
 .register
 {
     width:100%;
     margin:0 auto;
-
+ 
     text-align:center;
 }
 #Customer input[type="submit"]:hover
 {
-    
-
+   
+ 
     border-radius: 0.3em;
     /* margin-left:180px; */
     margin:0 auto;
@@ -148,15 +149,15 @@ button
     color: black;
     font-size: 17px;
     padding:10px;
-
-
+ 
+ 
 }
-
-
-
+ 
+ 
+ 
 #Customer textarea
 {
-   padding-top:30px;
+   padding-top:5px;
    text-align:center;
 }
 #message
@@ -164,7 +165,7 @@ button
     text-align: center;
     margin:0 auto;
 }
-
+ 
 #Customer fieldset
  {
      
@@ -176,45 +177,47 @@ button
      padding: 20px 10px;
      position: relative;
  }
-
-
-
+ 
+ 
+ 
 fieldset #Contact
 {
     margin:0 auto;
 }
-
+ 
 #Customer input[type="email"]
 {
-
+ 
     color:#253F7D;
     text-align:center;
-    
+    height:50px;
+   
 }
-
+ 
 #Customer input[type="number"]
 {
-
+ 
     color:#253F7D;
     text-align:center;
     width:302px;
-    height:70px;
+    height:50px;
 }
 #Customer input
 {
     border-radius:4px;
     font-family:Lato;
     border:1px solid #dcdcdc;
-
+ 
 }
 #Customer textarea
 {
     border-radius: 4px;
+    width:302px;
 }
-
+ 
 #Customer legend
 {
-    
+   
     /* padding:0.2em 1.5em; */
     text-align:center;
     background-color:white;
@@ -226,7 +229,7 @@ fieldset #Contact
     width:150px;
     padding:18px;
     text-align:center;
-
+ 
 }
 #Contact label
 {
@@ -242,8 +245,8 @@ fieldset #Contact
     margin:50px;
     line-height:20px;
 }
-
-
+ 
+ 
 #Contact
 {
     /* border:1px solid black; */
@@ -251,92 +254,95 @@ fieldset #Contact
     border-radius:15px;
     width:870px;
     margin:0 auto;
-    background-color:white;
+    background-color:lightblue;
     /* margin-top:50px; */
     margin-bottom:50px;
     padding:30px;
-
+   
+ 
 }
-
-
-
+ 
+ 
+ 
 #padding
 {
    padding-top:90px;
    padding-bottom:90px;
 }
-
+ 
 #Customer input[type="file"]
 {
     border:none;
     margin-left:120px;
 }
-
-
+ 
+ 
 #form-control
 {
     text-align:center;
     display: inline-block;
     margin-left:150px;
+    padding: 5px;
 }
-
+ 
 #form-control label
 {
     width:50px;
     display:inline-block;
+   
     /* margin:80px; */
 }
-
-
-
-/* 
+ 
+ 
+ 
+/*
 #form-control
 {
-    margin:20px 20px; 
+    margin:20px 20px;
 }
  */
-
-
+ 
+ 
 #Profile
 {
     position:relative;
     bottom:440px;
     left:450px;
 }
-
+ 
 #Profile img
 {
     width:120px;
     height:120px;
 }
-
+ 
 #Upload
 {
     margin-top:6px;
-    
+   
 }
-
+ 
 .updateProfile
 {
     margin-left:100px;
 }
-
+ 
 #Success
 {
     text-align:center;
     font-size:60px;
     font-family:Arial;
     margin-top:100px;
-
+ 
 }
-
+ 
 #Homepage
 {
     text-align:center;
     margin-top:20px;
     font-size:20px;
 }
-
+ 
 #Customer input[type=button]
 {
     padding:6px;
@@ -345,71 +351,71 @@ fieldset #Contact
     margin-left:180px;
     text-align:center;
 }
-
-
+ 
+ 
 #Customer input[type=text],textarea
 {
-
+ 
     color:#253F7D;
-    width:70px;
-    height:70px;
+    width:50px;
+    height:50px;
 }
-
+ 
 #Customer input[type=email]
 {
-
+ 
     color:#253F7D;
     width:302px;
-    height:70px;
+    height:60px;
 }
-
+ 
 #Customer input[type=password]
 {
-
+ 
     color:#253F7D;
     text-align:center;
     width:302px;
-    height:70px;
+    height:50px;
 }
-
+ 
 #Customer input[type=tel]
 {
-
+ 
     text-align:center;
     color:#253F7D;
     width:302px;
-    height:70px;
+    height:50px;
 }
-
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
+ 
 #Customer input[type="text"]
 {
     width:300px;
     text-align:center;
 }
-
+ 
 #Customer textarea
 {
     width:300px;
 }
-
+ 
 .customerRegSectioninput input
 {
     width:300px;
     height:40px;
     margin-top:8px;
 }
-
-
+ 
+ 
 .customerRegSection input:placeholder-shown
 {
     text-align: center;
 }
-
+ 
 #Customer footer
 {
     clear:both;
@@ -419,10 +425,10 @@ fieldset #Contact
     bottom:300;
     right:500;
     width:500px; */
-    
-
+   
+ 
 }
-
+ 
 #socialmedia
 {
     /* display:flex;
@@ -431,14 +437,50 @@ fieldset #Contact
     bottom:0px;
     right:0px;
 }
-
+ 
 #socialmedia a
 {
-    
+   
     margin-left:15px;
     margin-right:15px;
 }
-
+ 
+input#name
+{
+    border:5px solid black;
+ 
+}
+ 
+input#password
+{
+    border:5px solid black;
+ 
+}
+ 
+input#email
+{
+    border:5px solid black;
+ 
+}
+ 
+ 
+input#mobileNumber
+{
+    border:5px solid black;
+ 
+}
+ 
+textarea#address
+{
+    border:5px solid black;
+ 
+}
+ 
+textarea#id
+{
+    border:5px solid black;
+ 
+}
 
 
 

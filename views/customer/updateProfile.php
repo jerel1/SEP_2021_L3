@@ -74,14 +74,8 @@
                    <textarea name="address" id="address" cols="20" rows="5" required><?=$customer["address"];?></textarea><br>
                </div> 
 
-               <div id="form-control">
-                   <label>ID</label>
-                   
-                   <textarea name="id" id="id" ><?=$customer["id"];?></textarea><br>
-               </div> 
-               
-               <br>
-
+              
+             
                <div id="form-control" class="updateProfile">
                    
                <a href="updateProfile.php"><button>Update Profile</button></a>

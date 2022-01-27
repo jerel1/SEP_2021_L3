@@ -25,9 +25,9 @@
         $rewardsNotRedeemed = getUnredeemedRewards($user["id"]);
         $customer = getCustomerRecord($user["id"]);
     ?>
-    <h1>My Rewards</h1>
-    <p>
-        You have <?=$customer["reward_points"]?> reward points now.
+    <h1 class= "reward_top">My Rewards</h1>
+    <p class = "reward_top">
+        You have <b><?=$customer["reward_points"]?></b> reward points now.
     </p>
     
 
@@ -57,36 +57,33 @@
      </div>   
     
      <div class="box2">
-                
-            
-            <?php
-                foreach ($rewardsNotRedeemed as $reward) {
-                    echo "<tr>";
-                    
-                    echo "<td>".$reward["description"]."</td><br><br>";
-                    echo "Cash Value :$".$reward["cash_value"]."<br><br>";
-                    echo "Redeem Points :".$reward["redeem_points"]."<br><br>";
-                    echo "<td>
-                        <form method='post' action='../../controllers/rewardRedemptionController.php?function=add'>
-                            <input type='hidden' name='reward_id' value=".$reward["id"].">
-                            <input type='hidden' name='redeem_points' value=".$reward["redeem_points"].">
-                            <input type='submit' value='Redeem Reward'>
-                            <div class = 'vertical'></div>
-                           
-                        </form>
-                        </td>";
-                    echo "<div class = 'vertical'></div>";        
-                    echo "</tr>";
-                  
-                }
-          
-        }   //end else
-        if(isset($_SESSION["redeem_message"])) {
+         <?php
+     if(isset($_SESSION["redeem_message"])) {
             echo $_SESSION["redeem_message"];
             unset($_SESSION["redeem_message"]);
         }
     ?>
-    </div>
+       </div>       
+            <?php
+                foreach ($rewardsNotRedeemed as $reward) {?>
+                    <div class = "reward_row">
+                        <div class ="reward_info"><?php
+                    echo $reward["description"]."<br><br>";
+                    echo "Cash Value :$ ".$reward["cash_value"]."<br><br>";
+                    echo "Redeem Points :".$reward["redeem_points"]."<br><br>";?>
+                    </div>
+                        <form method='post' action='../../controllers/rewardRedemptionController.php?function=add'>
+                            <input type='hidden' name='reward_id' value="$reward['id']".>
+                            <input type='hidden' name='redeem_points' value="$reward['redeem_points']".>
+                            <input class="reward_redeem" type='submit' value='Redeem Reward'>
+                        </form>
+                    </div>
+                  
+    <?php           }
+          
+        } ?> 
+
+   
 
     <!-- <div class="box2">
        <p>Rewards Details</p>

@@ -63,6 +63,7 @@
                     echo "</ol>";
                     // can use $order here because php will still hold reference to the last $order element in the foreach loop.
                     echo "<div><b>Total amount: $".$order["totalAmount"]."</b></div>";
+                    
                     $_SESSION["totalAmount"]=$order["totalAmount"];
                     echo "<a href='checkout.php?order_id=".$order["order_id"]."'>Checkout order</a>";
                 } else {
