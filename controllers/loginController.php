@@ -23,7 +23,7 @@
                     header("Location: ../views/rider/index.php");
                 }
                 else if($role=="customer"){
-                   header("Location: ../views/customer/viewRestaurant.php") 
+                   header("Location: ../views/customer/viewRestaurant.php");
                 }
             } 
 }
