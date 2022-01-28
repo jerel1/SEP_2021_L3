@@ -29,7 +29,7 @@
         echo '<p> Order Number : ' . $_GET['order_id']. '</p> <br/>';
         echo '<p> Delivery Address : ' . $customerAddress['address']. '</p> <br/>';
         echo '<p> Delivery Date and Time : ' . $ordersummary['delivery_date'] .'  '. $ordersummary['delivery_time'] . '</p> <br/>';
-        echo"<hr>";
+        
         foreach ($orderDetail as $order){
 
             echo"<div class='Heading'>Order Quantity:<div>";
@@ -37,8 +37,9 @@
             echo"<div class='Heading'>Order Name:<div><br>";
             echo "<div class='ckoutname'>".$order["name"]. '</div>';
             echo "<div class='ckoutamt'>".$order["amount"].' SGD</div></div><br>';
-            echo"<hr>";
+            
         }
+        echo"<hr>";
        
         echo "<div class='ckoutsummary'><div class='ckoutsummary1'>Total Amount :</div><div class='ckoutsummary2 ckouttotal'>". $ordersummary['amount'] . " SGD</div></div>";
        

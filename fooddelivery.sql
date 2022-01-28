@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 25, 2022 at 01:14 AM
+-- Generation Time: Jan 22, 2022 at 12:19 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -105,35 +105,35 @@ CREATE TABLE IF NOT EXISTS `items` (
 --
 
 INSERT INTO `items` (`itemid`, `name`, `description`, `price`, `discount`, `restaurant_id`) VALUES
-(2, 'Fried Breaded Fish ', 'Comes with tar tar sauce', '8.90', 10, 1),
-(3, 'Australian Grain Fed Sirloin Steak', 'Comes with black pepper sauce ', '13.50', 10, 1),
-(4, 'Grilled Chicken Aglio Olio', '', '7.90', 10, 1),
-(5, 'Cajun Fries', 'Comes with nacho cheese dip', '3.90', 10, 1),
-(6, '5 Pcs Chicken Buddy Meal ', '5 pcs Chicken (includes 1 drumstick & 1 wing), 5 pcs Hot & Crispy Tenders, 2 sides and 2 drinks.', '28.95', 10, 2),
-(7, 'Chicken and Zinger Buddy Meal', '3 pcs Chicken (includes 1 drumstick or wing), 1 Zinger, 5 pcs Hot & Crispy Tenders, 2 sides and 2 drinks.', '28.95', 10, 2),
-(8, '2 pcs Chicken Meal', '2 pcs Chicken, 3 pcs Nuggets, 1 Side and 1 Drink', '11.50', 10, 2),
-(9, 'Zinger Meal ', '1 Zinger, 3 pcs Nuggets, 1 Side and 1 Drink', '11.00', 10, 2),
-(10, 'BBQ Pockett Meal ', '1 BBQ Pockett, 1 Side and 1 Drink', '8.00', 10, 2),
-(11, 'Cheese Fries', '', '4.00', 10, 2),
-(12, 'Crispy Chicken (2pc) Extra Value Meal (M Fries)', '', '8.10', 10, 4),
-(13, 'Buttermilk Crispy Chicken Extra Value Meal (M Fries)', '', '9.50', 10, 4),
-(14, 'Fillet-O-Fish Extra Value Meal', '', '6.00', 10, 4),
-(15, 'Double Fillet-O-Fish Extra Value Meal', '', '8.00', 10, 4),
-(16, 'McSpicy® Extra Value Meal (M Fries)', '', '7.90', 10, 4),
-(17, 'McWings® 4pc Extra Value Meal (M Fries)', '', '6.95', 10, 4),
-(21, 'Hot Plate Saba Fish ', 'Saba Fish with rice kimchi & lime', '6.30', 10, 6),
-(22, 'Hot Plate Chicken ', 'Chicken with onions rice & kimchi', '7.30', 10, 6),
-(23, 'Bibimbap', 'Rice Seaweed Carrot Cucumber Egg Kimchi Bibimbap Sauce', '6.80', 10, 6),
-(24, 'Kimchi Seafood Ramen ', 'Ramen Prawn Crabstick Kimchi Egg', '6.30', 10, 6),
+(2, 'Fried Breaded Fish ', 'Comes with tar tar sauce', '8.90', 0, 1),
+(3, 'Australian Grain Fed Sirloin Steak', 'Comes with black pepper sauce ', '13.50', 0, 1),
+(4, 'Grilled Chicken Aglio Olio', '', '7.90', 0, 1),
+(5, 'Cajun Fries', 'Comes with nacho cheese dip', '3.90', 0, 1),
+(6, '5 Pcs Chicken Buddy Meal ', '5 pcs Chicken (includes 1 drumstick & 1 wing), 5 pcs Hot & Crispy Tenders, 2 sides and 2 drinks.', '28.95', 0, 2),
+(7, 'Chicken and Zinger Buddy Meal', '3 pcs Chicken (includes 1 drumstick or wing), 1 Zinger, 5 pcs Hot & Crispy Tenders, 2 sides and 2 drinks.', '28.95', 0, 2),
+(8, '2 pcs Chicken Meal', '2 pcs Chicken, 3 pcs Nuggets, 1 Side and 1 Drink', '11.50', 5, 2),
+(9, 'Zinger Meal ', '1 Zinger, 3 pcs Nuggets, 1 Side and 1 Drink', '11.00', 0, 2),
+(10, 'BBQ Pockett Meal ', '1 BBQ Pockett, 1 Side and 1 Drink', '8.00', 0, 2),
+(11, 'Cheese Fries', '', '4.00', 0, 2),
+(12, 'Crispy Chicken (2pc) Extra Value Meal (M Fries)', '', '8.10', 0, 4),
+(13, 'Buttermilk Crispy Chicken Extra Value Meal (M Fries)', '', '9.50', 0, 4),
+(14, 'Fillet-O-Fish Extra Value Meal', '', '6.00', 0, 4),
+(15, 'Double Fillet-O-Fish Extra Value Meal', '', '8.00', 0, 4),
+(16, 'McSpicy® Extra Value Meal (M Fries)', '', '7.90', 0, 4),
+(17, 'McWings® 4pc Extra Value Meal (M Fries)', '', '6.95', 0, 4),
+(21, 'Hot Plate Saba Fish ', 'Saba Fish with rice kimchi & lime', '6.30', 0, 6),
+(22, 'Hot Plate Chicken ', 'Chicken with onions rice & kimchi', '7.30', 0, 6),
+(23, 'Bibimbap', 'Rice Seaweed Carrot Cucumber Egg Kimchi Bibimbap Sauce', '6.80', 0, 6),
+(24, 'Kimchi Seafood Ramen ', 'Ramen Prawn Crabstick Kimchi Egg', '6.30', 0, 6),
 (25, 'Kimchi Soup + Rice ', 'Rice Chicken Meat Beancurd Enoki Mushroom Glass Noodle Egg Kimchi', '6.80', 10, 6),
-(26, 'Omu Rice with Salmon ', 'Rice Salmon Egg Lettuce Ketchup Sauce', '7.30', 10, 6),
-(29, 'Saba Teriyaki ', 'Mackerel with teriyaki sauce', '9.90', 10, 7),
-(30, 'Oyako Don ', 'Chicken and egg rice bowl', '8.00', 10, 7),
-(31, 'Tempura Udon ', 'Prawn tempura, chicken, onsen egg and spring onion', '7.50', 10, 7),
-(32, 'Unatama', 'BBQ unagi (eel) with egg rice bowl', '10.00', 10, 7),
-(33, 'Chicken Karaage Curry ', 'Crispy chicken served with Japanese curry', '8.50', 10, 7),
-(34, 'Chawanmushi', '', '2.20', 10, 7),
-(37, 'wwowowowow', '1111iidiidd', '10.00', 10, 12);
+(26, 'Omu Rice with Salmon ', 'Rice Salmon Egg Lettuce Ketchup Sauce', '7.30', 0, 6),
+(29, 'Saba Teriyaki ', 'Mackerel with teriyaki sauce', '9.90', 0, 7),
+(30, 'Oyako Don ', 'Chicken and egg rice bowl', '8.00', 0, 7),
+(31, 'Tempura Udon ', 'Prawn tempura, chicken, onsen egg and spring onion', '7.50', 0, 7),
+(32, 'Unatama', 'BBQ unagi (eel) with egg rice bowl', '10.00', 0, 7),
+(33, 'Chicken Karaage Curry ', 'Crispy chicken served with Japanese curry', '8.50', 0, 7),
+(34, 'Chawanmushi', '', '2.20', 0, 7),
+(37, 'wwowowowow', '1111iidiidd', '10.00', 0, 12);
 
 -- --------------------------------------------------------
 
