@@ -31,7 +31,7 @@
 
             
                <div id = "profilePicture"> 
-                  <img id="viewImage" src="../uploaded_images/profilepic.png" />
+                    <img id="viewImage" src="../../views/uploaded_images/profilepic.png" />
                </div>
                
                <input type="file" name="profilepic" id="profilepic">
