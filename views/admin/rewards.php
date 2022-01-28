@@ -1,5 +1,6 @@
 <?php
     require_once "../header.php";
+    require_once "../../controllers/rewardController.php";
 ?>
 
 <body>
@@ -97,7 +98,7 @@
     </table>
 
     <h1>Add a new reward</h1>
-    <form action="../../controllers/rewardController.php?function=add" method="post">
+    <form action="../../controllers/rewardController.php?function=addReward" method="post">
                 <label for="description">Description</label>
                 <input type="text" name="description" id="description" size="30" required=""><br>
                 <label for="cash_value">Cash Value ($)</label>
@@ -107,6 +108,12 @@
                 <label for="availability">Number of available redemptions possible</label>
                 <input type="number" name="availability" id="availability" min="1" required=""><br>
                 <input type="submit" value="Add">
+                <div>
+                <?php
+                    if(isset($_SESSION["rewards_message"])) {
+                    echo $_SESSION["rewards_message"];
+                    }?>
+                </div>
             </form>
     </section>
 </body>
