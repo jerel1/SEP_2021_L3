@@ -13,7 +13,8 @@ main
     margin-left:200px;
 }
  
- 
+
+
  
 #profilePicture img{
     height: auto;
@@ -109,6 +110,7 @@ button
 {
    
     margin:0 auto;
+    margin-left: 200px;
     border-radius: 0.3em;
     /* margin: 6px; */
     background-color: #A18314;
@@ -132,10 +134,10 @@ button
  
 .register
 {
-    width:100%;
+
     margin:0 auto;
- 
     text-align:center;
+    margin-left:120px;
 }
 #Customer input[type="submit"]:hover
 {
@@ -481,6 +483,7 @@ textarea#id
     border:5px solid black;
  
 }
+
 
 
 
