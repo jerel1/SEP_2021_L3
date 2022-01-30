@@ -24,6 +24,15 @@
         header("Location: ../views/admin/rewards.php");
     }
 
-    
+    function remove()
+    {
+        global $conn;
+        session_start();
+        $reward_id = $_POST["reward_id"];
+        mysqli_query($conn,"DELETE FROM reward WHERE record_id=$reward_id");
+        updateRewardAvailability($reward_id); 
+        $_SESSION["rewards_message"] = "Rewards have been successfully deleted!";
+        header("Location: ../views/admin/rewards.php");
+    }
 
 ?>
