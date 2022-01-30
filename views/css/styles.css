@@ -5,13 +5,20 @@
 
 .ckoutdetail
 {
-    color:lightblue;
+    color:darkblue;
     font-weight:bold;
+    padding:30px;
+}
+
+#checkout
+{
+    background-color:lightblue;
+    border:8px solid black;
 }
 
 .Heading
 {
-    color:lightblue;
+    color:darkblue;
     font-weight:bold;
     font-size:30px;
 }
@@ -20,7 +27,7 @@
 {
     color:darkblue;
     font-weight:bold;
-    font-size:30px;
+    font-size:20px;
 }
 
 

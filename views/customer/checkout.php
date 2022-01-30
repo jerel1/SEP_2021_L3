@@ -21,7 +21,7 @@
     ?>
  
  
-    <section>
+    <section id="checkout">
     <h1>Checkout Summary</h1>
     <h2>Your Order Has Been Placed!</h2>
    <div>
@@ -39,7 +39,7 @@
             echo "<div class='ckoutamt'>".$order["amount"].' SGD</div></div><br>';
             
         }
-        echo"<hr>";
+        
        
         echo "<div class='ckoutsummary'><div class='ckoutsummary1'>Total Amount :</div><div class='ckoutsummary2 ckouttotal'>". $ordersummary['amount'] . " SGD</div></div>";
        
