@@ -11,7 +11,8 @@
 
     function addReward(){
         global $conn;
-        session_start();
+        if(!empty($_POST)){
+        $merchant_id = $_SESSION["loggedInUser"]["id"];
         $reward_id = $_POST["reward_id"];
         $reward = $_POST["reward"];
         $description = $_POST["description"];
@@ -22,17 +23,20 @@
         updateRewardAvailability($reward_id); 
         $_SESSION["rewards_message"] = "Rewards have been successfully updated!";
         header("Location: ../views/admin/rewards.php");
+        }
     }
 
     function remove()
     {
         global $conn;
-        session_start();
-        $reward_id = $_POST["reward_id"];
+        if(!empty($_GET)){
+        $reward_id = $_GET["reward_id"];
+        $merchant_id = $_SESSION["loggedInUser"]["id"];
         mysqli_query($conn,"DELETE FROM reward WHERE record_id=$reward_id");
         updateRewardAvailability($reward_id); 
         $_SESSION["rewards_message"] = "Rewards have been successfully deleted!";
         header("Location: ../views/admin/rewards.php");
+    }
     }
 
 ?>
