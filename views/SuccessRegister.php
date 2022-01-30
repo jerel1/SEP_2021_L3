@@ -24,13 +24,13 @@
        <a href="index.php"><p>Go to homepage</p></a>
    </div>
     
-    <div class="fixed">
+    <!-- <div class="fixed">
         <footer id="socialmedia">
             <a href="https://twitter.com/?lang=en"><img src="uploaded_images/twitter.png" alt="Twitter" width="80px" height="80px"></a>
             <a href="https://www.facebook.com/fareastfloracomsg"><img src="uploaded_images/Facebook.png" alt="Facebook" width="80px" height="80px"></a>
             <a href="https://www.instagram.com/fareastfloracomsg/"><img src="uploaded_images/Instagram.png" alt="Instagram" width="95px" height="95px"></a>
         </footer>
-    </div>
+    </div> -->
 </body>
 
 </html>

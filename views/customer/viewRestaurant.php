@@ -15,7 +15,6 @@
     require_once "../../controllers/ordersController.php";
 
     $restaurant_id = $_GET["id"];
-
     $restaurant = getRestaurantById($restaurant_id);
     ?>
 </head>
@@ -38,14 +37,11 @@
             Type of cuisine: <?=$restaurant['cuisine']?><br>
             Website: <a href="<?=$restaurant['website']?>" target="_blank"><?=$restaurant['website']?></a><br>
             Address: <?=$restaurant['address']?><br>
-            Rating: <?=$restaurant['Rating']?>
+            Rating: <?=$restaurant['Rating']?><br>
+            Votes: <?=$restaurant['Raters']?><br>
             
-            
-        </div>
-    </aside>
-    </div><br>
-    
-    <form action="../../controllers/restaurantController.php?function=Rating" method="POST">  
+
+            <form action="../../controllers/restaurantController.php?function=Rating" method="POST">  
         
         <label for="Rating">Rate Restaurant:</label>
 
@@ -55,15 +51,24 @@
         <option value="3">3</option>
         <option value="4">4</option>
         <option value="5">5</option>
+        
 
         </select>
 
         <input type="submit" value="submit">
+        
 
-    </form>
+        </form>
 
-    <?php require_once "orders.php"?>
+       <?php require_once "orders.php"?>
   
+            
+            
+        </div>
+    </aside>
+    </div><br>
+    
+    
 </section>
 <section class="restaurant_view">
 <?php

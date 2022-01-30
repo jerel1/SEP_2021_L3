@@ -65,7 +65,8 @@
                     echo "<div><b>Total amount: $".$order["totalAmount"]."</b></div>";
                     
                     $_SESSION["totalAmount"]=$order["totalAmount"];
-                    echo "<a href='checkout.php?order_id=".$order["order_id"]."'>Checkout order</a>";
+                    $_SESSION["order_ID"] = $order["order_id"];
+                    echo "<a href='cart.php?order_id=".$order["order_id"]."'>Proceed to cart</a>";
                 } else {
                     echo "<h2>Your cart is currently empty</h2>";
                 }

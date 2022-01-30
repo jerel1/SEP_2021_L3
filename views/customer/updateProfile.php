@@ -31,7 +31,7 @@
 
             
                <div id = "profilePicture"> 
-                    <img id="viewImage" src="../../views/uploaded_images/profilepic.png" />
+                  <img id="viewImage" src="../../views/uploaded_images/profilepic.png" />
                </div>
                
                <input type="file" name="profilepic" id="profilepic">
@@ -46,8 +46,8 @@
 
                <div id="form-control">
                    <label>Password</label>
+                   <input type="password" name="password" id="password"  readonly value="<?php echo $user['password'];?>"><br>
                    
-                   <input type="password" name="password" id="password" required><br><br>
                </div>
 
                

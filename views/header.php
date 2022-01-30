@@ -52,7 +52,7 @@
                 ?>
                 <section class="searchSection">
                     <form method="post" action= <?php echo $action; ?>>
-                        <input type="text" name="search" id="search" size="40" placeholder="Search for restaurants">
+                        <input type="text" name="search" id="search" size="40" placeholder="Search for restaurants...">
                         <input class="searchBtn" type="submit" value="Search">
                     </form>
                 </section>

@@ -9,8 +9,7 @@
             case "add":
                 addOrder();
             break;
-            
-
+        
             case "deleteItem":
                 delete();
             break;
@@ -24,6 +23,7 @@
     }
     
 
+
     function CheckOutOrder(){
         global $conn;
         date_default_timezone_set("Asia/Singapore");
@@ -32,11 +32,10 @@
         $deliveryDateTime = isset($_POST['_dt'])?$_POST['_dt']:date('Y-m-d\TH:i:s',$d);
 
         $formatedDT = explode('T', $deliveryDateTime);
-        /* $deliveryDate = $formatedDT[0];
-        $deliveryTime = $formatedDT[1]; */
+        $deliveryDate = $formatedDT[0];
+        $deliveryTime = $formatedDT[1];
         $orderID = $_POST['orderID'];
-
-        echo $query = "UPDATE orders SET checked_out = '1' WHERE orders.id = $orderID";
+        echo $query = "UPDATE orders SET checked_out = '1', delivery_date = '$deliveryDate', delivery_time = '$deliveryTime' WHERE orders.id = $orderID";
         mysqli_query($conn, $query);
         
         if($query){
@@ -45,6 +44,8 @@
             echo $query;
         }
     }
+
+
 
     function addOrder() {
         global $conn;
@@ -228,7 +229,6 @@
         
         $item_id = $_POST['item_id'];
         $order_id = $_POST['order_id'];
-        $QTY = $_POST['qty'];
 
         $query_price = mysqli_query ($conn, "SELECT price FROM items WHERE id = $item_id");
         $price_item = mysqli_fetch_assoc($query_price);

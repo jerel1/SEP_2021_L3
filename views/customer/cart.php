@@ -9,6 +9,17 @@
     <?php
     require_once "../header.php";
     ?>
+    <?php
+        
+        $user = ISSET($_SESSION["loggedInUser"])?$_SESSION["loggedInUser"]:false;
+        date_default_timezone_set("Asia/Singapore"); 
+
+        $date = new DateTime();
+        $dt = $date->format("Y-m-d\TH:i:s");
+        
+        $dt_max = new DateTime("+7 days");
+        $dt_max = $dt_max->format("Y-m-d\TH:i:s");
+    ?>
 
 </head>
 
@@ -63,16 +74,22 @@
             <div>
                 <br>
                 <br>
-            <label class='DD'>Delivery Date:</label>
-            <input type="date" name="datetime" id="datetimebox" class="delv" require><br><br>
-            <label class='DD'>Delivery Time:</label>
-            <input type="time" name="datetime" id="datetimebox" class="delv" require><br>
+                
             <?php
-                    // can use $order here because php will still hold reference to the last $order element in the foreach loop.
-                    echo "<div class='total_amt' ><b>Total amount: $".$order["totalAmount"]."</b></div>";
                     
+                    echo "<div class='total_amt' ><b>Total amount: $".$order["totalAmount"]."</b></div>";    
                     $_SESSION["totalAmount"]=$order["totalAmount"];
-                    echo "<a href='checkout.php?order_id=".$order["order_id"]."'>Checkout order</a>";
+                    $current_order = isset($_SESSION['order_ID'])?($_SESSION['order_ID']):"";
+                    ?>
+                    <form action="../../controllers/ordersController.php?function=checkOut" method="post">
+                    <input type="datetime-local" name="_dt" value="<?php echo $dt ?>" min="<?php echo $dt ?>" max="<?php echo $dt_max ?>">
+                    <input type="hidden" name = 'orderID' value='<?php echo $current_order; ?>' >
+                    <input type='submit' value='Checkout'>
+                    </form>
+        
+                    <?php
+                    
+                    
                 } else {
                     echo "<h2>Your cart is currently empty</h2>";
                 }

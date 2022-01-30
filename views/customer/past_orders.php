@@ -28,6 +28,8 @@
     background-color: #f1f1f1;
     margin: 10px;
     padding: 20px;
+    border:9px solid darkcyan;
+    border-radius:5px;
    
   }
  
@@ -86,7 +88,7 @@ img {
                             print_r($order_item["name"]);
                             echo"<br><br>";
 
-                            echo"Amount:<br>";
+                            echo"Amount:<br> $";
                             print_r($order_item["amount"]);
                             echo"<br><br>";
 

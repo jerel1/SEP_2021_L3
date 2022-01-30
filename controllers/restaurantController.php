@@ -14,11 +14,8 @@
             break;
             case "removeRestaurant":
                 deleteRestaurant();
-            break;
 
-            case "rateRestaurant":
-                ratingRestaurant();
-            break;
+            
 
             case "Rating":
                 ratingRestaurant();
@@ -26,25 +23,27 @@
         }
     }
 
+    
     function ratingRestaurant()
     {
 
                 global $conn;
            
-                $restaurant_id = $_GET["id"];
+                $restaurant_id = $_POST["id"];
                 $rating= $_POST["rating"];
                 //echo"<br>you have chosen $rating";/
-                $ratingValue = mysqli_query($conn,"SELECT Rating from restaurants WHERE id=2");
+                $ratingValue = mysqli_query($conn,"SELECT Rating from restaurants WHERE id= 1");
                 $rating_fetch= mysqli_fetch_assoc($ratingValue);
+                
 
-                $raters = mysqli_query($conn,"SELECT Raters FROM restaurants WHERE id=2");
+                $raters = mysqli_query($conn,"SELECT Raters FROM restaurants WHERE id= 1");
                 $raters_num = mysqli_fetch_assoc($raters);
                 $raters_final=(int)$raters_num;
 
-                mysqli_query($conn,"UPDATE restaurants SET Raters=$raters_final+1 WHERE id=2");
+                mysqli_query($conn,"UPDATE restaurants SET Raters=$raters_final+1 WHERE id= 1");
 
                 $average=((int)$rating_fetch+(int)$rating)/$raters_final;
-                mysqli_query($conn,"UPDATE restaurants SET Rating=$average WHERE id=2");
+                mysqli_query($conn,"UPDATE restaurants SET Rating=$average WHERE id= 1");
 
                 header('Location: ' . $_SERVER['HTTP_REFERER']);
                 
@@ -70,9 +69,9 @@
 
         global $conn;
         if(!empty($_GET)) {
+
+
             $restaurant_id = $_GET["id"];
-            
-    
             global $conn;
             $query = mysqli_query($conn,"SELECT Rating FROM restaurants WHERE  $restaurant_id");
             $result = mysqli_fetch_all($query, MYSQLI_ASSOC); 
@@ -84,11 +83,11 @@
         
     }
 
-
-    // code snippet 3-2
-    function addRestaurant() {
+    
+    function addRestaurant()
+    {
         global $conn;
-        if(!empty($_POST)) {
+        if (!empty($_POST)) {
             $merchant_id = $_SESSION["loggedInUser"]["id"];
             $name = $_POST["name"];
             $open_hours = $_POST["open_hours"];
@@ -97,17 +96,23 @@
             $website = $_POST["website"];
             $address = $_POST["address"];
             $image_name = $_FILES["image"]["name"];
-    
-            // __DIR__ refer to the directory this file resides in.
-            $target = __DIR__."/../views/uploaded_images/".$image_name;
-            move_uploaded_file($_FILES["image"]["tmp_name"] , $target);
-    
-            mysqli_query($conn,"INSERT into restaurants(name,open_hours,close_hours,cuisine_id,website,image,address) values('$name','$open_hours','$close_hours',$cuisine,'$website','$image_name','$address')");
+
+            $allowedType = array("image/gif", "image/jpeg", "image/jpg", "image/png");
+            if ( !in_array ( $_FILES["image"]["type"] , $allowedType ) ){
+                $_SESSION["merchantHomeMessage"] = "Please ensure restaurant image is in gif/jpeg/jpg/png format";
+                header('Location: ' . $_SERVER['HTTP_REFERER']);
+                exit;
+            }
+
+           
+            $target = __DIR__ . "/../views/uploaded_images/" . $image_name;
+            move_uploaded_file($_FILES["image"]["tmp_name"], $target);
+
+            mysqli_query($conn, "INSERT into restaurants(name,open_hours,close_hours,cuisine_id,website,image,address,status) values('$name','$open_hours','$close_hours',$cuisine,'$website','$image_name','$address',1)");
             $last_id = mysqli_insert_id($conn);
-            mysqli_query($conn,"INSERT into merchant_restaurant(merchant_id,restaurant_id) values($merchant_id,$last_id)");
-    
-            $_SESSION["merchantHomeMessage"] = "Restaurant is added successfully!";
-            //go back to previous page
+            mysqli_query($conn, "INSERT into merchant_restaurant(merchant_id,restaurant_id) values('$merchant_id','$last_id')");
+
+            $_SESSION["merchantHomeMessage"] = "Restaurant Is Added Successfully!";
             header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
     }
@@ -125,7 +130,7 @@
             $image_name = $_FILES["image"]["name"];
     
             $hasFile = $_FILES["image"]["size"]!=0;
-            // __DIR__ refer to the directory this file resides in.
+            
     
             if($hasFile) {
                 $target = __DIR__."/../views/uploaded_images/".$image_name;
@@ -136,7 +141,7 @@
             }
     
             $_SESSION["restaurantUpdateMsg"] = "Restaurant is updated successfully!";
-            //go back to previous page
+           
             header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
     }
@@ -170,7 +175,8 @@
     }
 
     //code snippet 4-12
-    function searchRestaurants($search) {
+    function searchRestaurants($search) 
+    {
         global $conn;
         $query = mysqli_query($conn,"SELECT r.*, c.name as cuisine from restaurants r INNER JOIN cuisines c on c.id=r.cuisine_id where r.name like '%$search%'");
         $result = mysqli_fetch_all($query, MYSQLI_ASSOC); 
@@ -178,17 +184,15 @@
     }
     
     // code snippet 3-9
-    function getRestaurantById($id) {
+    function getRestaurantById($id) 
+    {
         global $conn;
         $query = mysqli_query($conn,"SELECT r.*, c.name as cuisine from restaurants r INNER JOIN cuisines c on c.id=r.cuisine_id where r.id=$id");
         $result = mysqli_fetch_assoc($query); 
         return $result;
     }
-    // code snippet 3-4 
-    function getCuisines() {
-        global $conn;
-        $query = mysqli_query($conn,"SELECT * from cuisines");
-        $result = mysqli_fetch_all($query, MYSQLI_ASSOC); 
-        return $result;
-    }   
+      
+    
+    
+    
 ?>
